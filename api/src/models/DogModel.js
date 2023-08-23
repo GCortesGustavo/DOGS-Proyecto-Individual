@@ -5,35 +5,35 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('dog', {
     ID:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
       unique: true,
-      autoIncrement: true,
     },
     image:{
-      type: DataTypes.BLOB,
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
-    name: {
+    name:{
       type: DataTypes.STRING,
       allowNull: false,
     },
     height:{
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     weight:{  
       type: DataTypes.STRING,
       allowNull: false,
     },
-    yearsOfLife:{  
+    life_span:{  
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        min: 1,
-        max: 15,
-      }
+    },
+    createdInDB:{
+      type: DataTypes.STRING,
+      defaultValue : "db"
     }
   });
 };
