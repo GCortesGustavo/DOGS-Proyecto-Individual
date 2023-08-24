@@ -1,12 +1,13 @@
-import { createStore, applyMiddleware,compose } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import reducer from './reducer';
+import { applyMiddleware, createStore } from "redux"; // redux
+import { composeWithDevTools } from "redux-devtools-extension"; // redux-devtools-extension
+import thunk from "redux-thunk"; // redux-thunk
+import  Reducer  from "./reducer";  // Reducer 
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // esta línea es para conectar con la extensión del navegador => REDUX DEVTOOLS 
 
 const store = createStore(
-    reducer,
-    composeEnhancer(applyMiddleware(thunkMiddleware)) // esta línea es para poder hacer peticiones a un server
-);
+    Reducer, 
+    composeWithDevTools(applyMiddleware(thunk)) // applyMiddleware(thunk) para que se puedan usar los thunks
+    ); 
+
 
 export default store;
