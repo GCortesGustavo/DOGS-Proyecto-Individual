@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SearchBar from "./searchBar/SearchBar";
+import SearchBar from "../components/SearchBar/SearchBar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
