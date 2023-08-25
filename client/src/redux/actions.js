@@ -2,18 +2,15 @@ import axios from "axios";
 import { 
     GET_ALL_DOGS,
     GET_ALL_TEMPERAMENT,
-    GET_DESCRIPTION,
-    //GET_CLEAN,
-    GET_DOGS_FOR_NAME,
-    // DELETE_DOG,
-    ADD_FAV,
-    DELETE_FAV,
+    GET_DOGS_NAME,
+    GET_DETAIL,
     FILTER_TEMPERAMENT,
+    FILTER_CREATED,
     ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
-    //FILTER_CREATED,
-    SET_LOADING,
-    ERROR
+    POST_DOG,
+    DELETE_DOG,
+    CLEAR_DETAIL
 } from "./action-types";
 
 //Obtener
@@ -21,135 +18,93 @@ import {
 // Action para obtener datos desde el back el cual esta corriendo en el puerto 3001
 export const getAllDogs = () => {
     //obtener todos los perros en /dogs por medio de un get
-    return (dispatch) => {
-        axios.get("/dogs") //trae todos los perros
-        .then(response => {
-            dispatch({
-                type: GET_ALL_DOGS,
-                payload: response.data
-            });
+    return async function (dispatch) {
+        var json = axios.get("/dogs") //trae todos los perros
+        console.log(json)
+        return dispatch ( {
+            type: GET_ALL_DOGS,
+            payload: json.data
         })
-        .catch(
-            error => {
-                dispatch({
-                    type: ERROR,
-                });
-            }
-        );
     }   
 }
 
 
 export const getAllTemperament = () => {
     // Obtengo todos los temperamentos de mi back
-    return (dispatch) => {
-        axios("/temperament") //trae todos los temperamentos
-        .then(response => { //mapeo los datos de la api
-            dispatch({type: GET_ALL_TEMPERAMENT, payload: response.data}) //dispatcheo el array de temperamentos
+    return async function (dispatch) {
+        var json = await axios.get("/temperament")
+        return dispatch({
+            type : GET_ALL_TEMPERAMENT,
+            payload: json.data
         })
     }
 }
 
-export const getDescription = (id) => {
+export const getDogsName = (name) => {
+    //obtener todos los perros que coincidan con el nombre que pasamos por parametro
+    return async function (dispatch) {
+        try {
+            var json = await axios.get(`/dogs?name=${name}`)
+            return dispatch({
+                type: GET_DOGS_NAME,
+                payload: json.data
+            })
+        } catch (error) {
+            alert("The dog could no be found")
+        }
+    }
+}
+
+
+export const getDetail = (id) => {
     // Enviar el id al reducer para crear la seccion de Description
     return async function (dispatch) {
         try {
             const json = await axios.get(`/dogs/${id}`);
             return dispatch ({
-                type: GET_DESCRIPTION,
+                type: GET_DETAIL,
                 payload: json.data
             })
         }
         catch(error) {
-            return dispatch ({
-                type: ERROR,
-            })
+            console.log(error);
         }
     }
 }
 
-export const getDogsForName = (name) => {
-    //obtener todos los perros que coincidan con el nombre que pasamos por parametro
-    try {
-        return {
-            type: GET_DOGS_FOR_NAME,
-            payload: name
-        }
-    } catch (error) {
-        alert("Error al obtener la descripcion")
-        
-    }
-}
 
 //para crear un nuevo perro
 export const postDog = (data) => {
-    return async function (dispatch) { //Llamada a la API
-        try {
-            const res = await axios.post(`/dogs`, data); //Se le socicita un post a la api en la ruta /dogs
-            return res; //la respuesta se almacena en res 
-        } catch (error) {
-            return dispatch ({
-                type: ERROR,
-            })
+    try {
+        return async function () {
+            const posted = await axios.post('/dogs', data)
+            return posted
         }
-    };
+    } catch (error) {
+        alert("The dog could not be created")
+    }
 };
 
 // TODAVIA NO CREO LA RUTA DELETE
 
-// export const deleteDog = (id) => {
-//     return async function (dispatch) {
-//         try {
-//             await axios.delete(`/deleted/${id}`);
+// export function deleteDog(id){
+//     return async function (dispatch){
+//         try{
+//            await axios.delete(`/dogs/${id}`);
 //             return dispatch({
 //                 type: DELETE_DOG,
-//         });
-//         } catch (e) {
-//             return dispatch({
-//                 type: ERROR,
-//         });
+//                 payload: id
+//             })
+//         } catch(error){
+//             alert('no se pudo borrar el perro')
 //         }
-//     };
-// };
-
-
-//FAVORITOS
-
-export const addFav = (payload) => {
-    return { type: ADD_FAV, payload };
-};
-
-export const deleteFav = (id) => {
-    return { type: DELETE_FAV, payload: id };
-};
-
-// Utils
-
-
-//Indica que se esta cargando la aplicacion
-export function setLoading ()  {
-    return { type: SET_LOADING };
-};
-
-//Indica que se a producido un error en la aplicacion
-export function setError ()  {
-    return { type: ERROR };
-};
-
-//Lo utilizo para reiniciar algun estado de la aplicacion
-// export function getClean () {
-//     return{
-//         type: GET_CLEAN,
-//         payload: []
 //     }
 // }
 
-// Filters
-
-export const filterTemperament = (temperament) => {
+export function orderByWeight(payload){
     return {
-        type: FILTER_TEMPERAMENT,
-        payload: temperament
+        type: ORDER_BY_WEIGHT,
+        payload
     }
 }
 
@@ -160,10 +115,23 @@ export function orderByName(payload){
     }
 }
 
-export function orderByWeight(payload){
+export const filterTemperament = (temperament) => {
     return {
-        type: ORDER_BY_WEIGHT,
+        type: FILTER_TEMPERAMENT,
+        payload: temperament
+    }
+}
+
+export const filterCreateDog = (payload) => {
+    return{
+        type: FILTER_CREATED,
         payload
+    }
+}
+
+export const crearDetail = () => {
+    return{
+        type: CLEAR_DETAIL
     }
 }
 
