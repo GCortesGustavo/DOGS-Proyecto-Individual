@@ -8,31 +8,43 @@ import {
     FILTER_CREATED,
     ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
-    POST_DOG,
-    DELETE_DOG,
+    //POST_DOG,
+    //DELETE_DOG,
     CLEAR_DETAIL
 } from "./action-types";
 
 //Obtener
-
+const URL = "http://localhost:3001"
 // Action para obtener datos desde el back el cual esta corriendo en el puerto 3001
 export const getAllDogs = () => {
     //obtener todos los perros en /dogs por medio de un get
+    // return async function (dispatch) {
+    //     var json = axios.get(`http://localhost:3001/dogs`) //trae todos los perros
+    //     console.log(json)
+    //     return dispatch ( {
+    //         type: GET_ALL_DOGS,
+    //         payload: json.data
+    //     })
+    // }   
     return async function (dispatch) {
-        var json = axios.get("/dogs") //trae todos los perros
-        console.log(json)
-        return dispatch ( {
+        try {
+            const response = await axios.get(`http://localhost:3001/dogs`);
+            const dogs = response.data;
+            dispatch({
             type: GET_ALL_DOGS,
-            payload: json.data
-        })
-    }   
+            payload: dogs,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 }
 
 
 export const getAllTemperament = () => {
     // Obtengo todos los temperamentos de mi back
     return async function (dispatch) {
-        var json = await axios.get("/temperament")
+        var json = await axios.get(`${URL}/temperament`)
         return dispatch({
             type : GET_ALL_TEMPERAMENT,
             payload: json.data
@@ -75,14 +87,10 @@ export const getDetail = (id) => {
 
 //para crear un nuevo perro
 export const postDog = (data) => {
-    try {
         return async function () {
             const posted = await axios.post('/dogs', data)
             return posted
         }
-    } catch (error) {
-        alert("The dog could not be created")
-    }
 };
 
 // TODAVIA NO CREO LA RUTA DELETE
@@ -129,7 +137,7 @@ export const filterCreateDog = (payload) => {
     }
 }
 
-export const crearDetail = () => {
+export const clearDetail = () => {
     return{
         type: CLEAR_DETAIL
     }

@@ -2,9 +2,9 @@ import './App.css';
 import Landing from "./components/landing/landing";
 // import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
-import Home from './components/home';
-import Form from "./components/form";
-  
+import DogCreate from './components/DogCreate/DogCreate';
+import HomePage from './components/Home/HomePage';
+import Detail from './components/Detail/detail';
 
 function App() {
 
@@ -15,9 +15,11 @@ function App() {
       <Routes>
           <Route path="/" element={<Landing/>}/>
 
-          <Route path="/home" element={<Home/>}/>
+          <Route path="/home" element={<HomePage/>}/>
 
-          <Route path='/form' element={<Form/>}/>
+          <Route path='/dogcreate' element={<DogCreate/>}/>
+
+          <Route path="/home/dogs/:id" element={<Detail />} />
 
       </Routes>
     </div>
