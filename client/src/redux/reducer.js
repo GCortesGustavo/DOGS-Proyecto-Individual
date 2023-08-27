@@ -85,6 +85,7 @@ const reducer = (state = initialState, action) => {
             
 
         case FILTER_CREATED:
+            //orden por api o db
             const allDogs = state.allDogs;
             const filterCreated = action.payload === "created" ? allDogs.filter(dog => dog.createdInDb) : allDogs.filter(dog => !dog.createInDb)
 
@@ -94,18 +95,20 @@ const reducer = (state = initialState, action) => {
             };
             
         case ORDER_BY_WEIGHT:
-                    const dogs = state.allDogs.filter((dog) => dog.weight);
-                    const filterWeight =
-                    action.payload === "Max"
-                        ? dogs.sort((a, b) => calculateAverage(b.weight) - calculateAverage(a.weight))
-                        : dogs.sort((a, b) => calculateAverage(a.weight) - calculateAverage(b.weight));
-                    return {
-                    ...state,
-                    dogs: filterWeight,
-                    };
+            //orden por peso
+                const dogs = state.allDogs.filter((dog) => dog.weight);
+                const filterWeight =
+                action.payload === "Max"
+                    ? dogs.sort((a, b) => calculateAverage(b.weight) - calculateAverage(a.weight))
+                    : dogs.sort((a, b) => calculateAverage(a.weight) - calculateAverage(b.weight));
+                return {
+                ...state,
+                dogs: filterWeight,
+                };
 
 
         case FILTER_TEMPERAMENT:
+            //filtrar x temperamento
             const allDogs2 = state.allDogs;
             const filteredTemp = action.payload === "All" ? allDogs2 : allDogs2.filter(element => {
                 return element.temperament?.includes(action.payload)

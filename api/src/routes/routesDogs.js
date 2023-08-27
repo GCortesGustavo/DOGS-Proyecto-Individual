@@ -1,4 +1,3 @@
-// const { default: axios } = require("axios");
 const express = require("express");
 const dogs = express.Router();
 const { Dog, Temperament } = require("../db.js");
@@ -29,8 +28,8 @@ dogs.get("/dogs", async(req, res) =>{
 });
 
 
-//Ruta para postear perros nuevos-FUNCIONA
-dogs.post("/dogs", async(req, res)=>{// lo que requiere el body
+//Ruta para postear perros nuevos
+dogs.post("/dogs", async(req, res)=>{
     try{
     const { name, height, weight, life_span} = req.body;
     const temperament = await Temperament.findAll();
@@ -51,7 +50,7 @@ dogs.post("/dogs", async(req, res)=>{// lo que requiere el body
 })
 
 
-//Ruta para traer el dog por name-FUNCIONA
+//Ruta para traer el dog por name
 dogs.get("/dogs/name", async (req, res) => {
     try {
         const { name } = req.query;
@@ -76,12 +75,10 @@ dogs.get("/dogs/:idRaza", async(req, res) => {
             const getDogs = await getApiDogs(); 
             const getDogsDB = await getDBInfoDog();
             
-            // const dogApi = await getDogs.find((perro) => perro.id == idRaza); //TRAE LA INFO DE LA API
             dog = await getDogs.find((perro) => perro.id == idRaza); //TRAE LA INFO DE LA API
             
             if (!dog) {
                 dog = await getDogsDB.find((perro) => perro.id == idRaza);
-                // res.status(404).json("No se encontró el perro en la base de datos");
             } else {
                 res.json(dog);
             }

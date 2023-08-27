@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-//import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
-//import {useParams} from "react-router-dom";
 import {getAllDogs, clearDetail} from "../../redux/actions";
 import { Link } from "react-router-dom";
 

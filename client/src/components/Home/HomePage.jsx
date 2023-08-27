@@ -1,14 +1,13 @@
 import React from "react"; 
 import { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-//import axios from "axios";
+
 import { Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 import { filterCreateDog, 
     filterTemperament, 
     getAllDogs, 
-    getAllTemperament, 
-    //getDogsName, 
+    getAllTemperament,  
     orderByName, 
     orderByWeight } from "../../redux/actions";
 import Pagination from "../Pagination/Pagination";
@@ -50,7 +49,6 @@ const Home = () => {
     }
 
     const handlerFilterTemperament = (event) => {
-        // event.preventDefault();
         dispatch(filterTemperament(event.target.value))
         setCurrentPage(1)
     }

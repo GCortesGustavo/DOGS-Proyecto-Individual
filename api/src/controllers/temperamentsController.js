@@ -1,5 +1,5 @@
 const getAllTemperamentsFromDB = require("./helpers/getAllTemperamentsFromDB");
-const filterDate = require("./helpers/functions/filterDate");
+//const filterDate = require("./helpers/functions/filterDate");
 
 const temperamentsController = {
 getAllTemperaments: async (_req, res) => {
