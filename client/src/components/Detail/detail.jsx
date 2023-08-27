@@ -8,36 +8,49 @@ import { Link } from "react-router-dom";
 
 const Detail = (props) => {
     const dispatch = useDispatch();
-    const dog = useSelector((state) => state.dogDetail)
-    //const [currentPage, setCurrentPage] = useState(1)
+    const dog = useSelector((state) => state.dogDetail || [])
 
     useEffect(() => {
-        dispatch(getAllDogs(props.match.params.id));
-        return dispatch(clearDetail())
-    }, [dispatch, props.match.params.id]);
+        if(props.match?.params?.id) {
+            dispatch(getAllDogs(props.match.params.id));
+        }
+        return () => dispatch(clearDetail())
+    }, [dispatch, props.match?.params.id])
 
     return (
         <div>
             <Link to="/home">
                 <button>Go home</button>
             </Link>  
-        {Object.keys(dog).length ? 
+        {Object.keys(dog).length ? (
         <div>
-                <img src={dog[0].image ? dog[0].image : dog[0].image = "https://www.nextdayflyers.com/blog/wp-content/uploads/2014/10/Pet-Flyer-1-768x1024.jpg"} alt="woof" width="400" height="400" />
+            <img
+            src={
+                dog?.image
+                ? dog.image
+                : (dog.image =
+                    "https://www.nextdayflyers.com/blog/wp-content/uploads/2014/10/Pet-Flyer-1-768x1024.jpg")
+            }
+            alt="woof"
+            width="400"
+            height="400"
+            />
         <div>
-        
-        <h1> Name : {dog[0].name}</h1>
-        <h2> Life Temp : {dog[0].life_Stamp}</h2>
-        <h2> Weight :{dog[0].weight} KG</h2>
-        <h2> Height :{dog[0].height} CM</h2>
-        <div>
-        <h2>Temperaments :</h2>
-        <h2>{dog[0].temperament}</h2>
+                <h1> Name : {dog?.name}</h1>
+                <h2> Life Temp : {dog?.life_stamp}</h2>
+                <h2> Weight :{dog?.weight} KG</h2>
+                <h2> Height :{dog?.height} CM</h2>
+            <div>
+                <h2>Temperaments :</h2>
+                <h2>{dog?.temperament}</h2>
+            </div>
         </div>
         </div>
-
-    </div>
-                : <div> <h1>LOADING...</h1> </div> }
+        ) : (
+        <div>
+            <h1>Cargandooo...</h1>
+        </div>
+    )}
         </div>
     )
 }

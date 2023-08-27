@@ -59,7 +59,6 @@ dogs.get("/dogs/name", async (req, res) => {
 
         if (name) {
             const dog = allDogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
-            console.log(dog);
             res.status(200).json(dog);
         } else {
             res.status(404).send('faltan datos');

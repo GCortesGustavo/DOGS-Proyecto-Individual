@@ -17,15 +17,6 @@ import {
 const URL = "http://localhost:3001"
 // Action para obtener datos desde el back el cual esta corriendo en el puerto 3001
 export const getAllDogs = () => {
-    //obtener todos los perros en /dogs por medio de un get
-    // return async function (dispatch) {
-    //     var json = axios.get(`http://localhost:3001/dogs`) //trae todos los perros
-    //     console.log(json)
-    //     return dispatch ( {
-    //         type: GET_ALL_DOGS,
-    //         payload: json.data
-    //     })
-    // }   
     return async function (dispatch) {
         try {
             const response = await axios.get(`http://localhost:3001/dogs`);
@@ -56,7 +47,7 @@ export const getDogsName = (name) => {
     //obtener todos los perros que coincidan con el nombre que pasamos por parametro
     return async function (dispatch) {
         try {
-            var json = await axios.get(`/dogs?name=${name}`)
+            var json = await axios.get(`http://localhost:3001/dogs/name?name=${name}`)
             return dispatch({
                 type: GET_DOGS_NAME,
                 payload: json.data

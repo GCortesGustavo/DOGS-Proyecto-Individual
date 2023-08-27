@@ -4,7 +4,7 @@ import React from "react";
 const Pagination = ({dogsPerPage, allDogs, pagination}) => {
     const pageNumbers= [];
 
-    for (let i = 1; i < Math.ceil(allDogs/dogsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(allDogs/dogsPerPage); i++) {
         pageNumbers.push(i);
     }
 
@@ -15,7 +15,7 @@ const Pagination = ({dogsPerPage, allDogs, pagination}) => {
                     pageNumbers?.map((number) => {
                         return(
                             <li key={number}>
-                                <button onClick={() => pagination}>{number}</button>
+                                <button onClick={() => pagination(number)}>{number}</button>
                             </li>
                         )
                     })
