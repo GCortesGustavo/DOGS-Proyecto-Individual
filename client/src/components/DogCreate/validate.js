@@ -10,7 +10,7 @@ const validate = (input) => {
 
     if(input.height) {
         if (!/^[0-9]*$/) {
-            errors.life_span = "It must be only numbers"
+            errors.height = "It must be only numbers"
         }
     }
 
@@ -20,7 +20,7 @@ const validate = (input) => {
 
     if(input.weight){
         if (!/^[0-9]*$/) {
-            errors.life_span = "It must be only numbers"
+            errors.weight = "It must be only numbers"
         }
     }
 

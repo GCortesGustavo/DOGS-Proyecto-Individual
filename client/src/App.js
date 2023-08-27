@@ -19,7 +19,7 @@ function App() {
 
           <Route path='/dogcreate' element={<DogCreate/>}/>
 
-          <Route path="/home/dogs/:id" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail />} />
 
       </Routes>
     </div>

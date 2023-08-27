@@ -10,25 +10,44 @@ const DogCreate = () => {
 
     const allTemperaments = useSelector((state) => state.temperaments)
     const [errors, setErrors] = useState({})
+    const [nameInput, setNameInput] = useState("")
     const [input, setInput] = useState({
         name: "",
-        height: 0,
-        weight: 0,
+        height_min: 0,
+        height_max: 0,
+        weight_min: 0,
+        weight_max: 0,
         life_span: 0,
         image: "",
         temperament: []
     })
 
-    const handleChange = (dog) => {
-        setInput({
-            ...input,
-            [dog.target.value] : dog.target.value,
-        })
+    const handleChangeName = (event) => {
+        if(event.target.value === event.target.name) {
+            setNameInput(event.target.value)
+        } else {
+            setInput({
+                ...input,
+                [event.target.name] : event.target.value,
+            });
+        }
         setErrors(validate({
             ...input,
-            [dog.target.value] : dog.target.value
+            [event.target.name] : event.target.value
         }))
     }
+
+    const handleChange = (event) => {
+        setInput({
+            ...input,
+            [event.target.name]: event.target.value,
+        });
+        setErrors(validate({
+            ...input,
+            [event.target.name]: event.target.value,
+        }));
+    };
+    
 
     const handleSelect = (dog) => {
         if(!input.temperament.includes(dog.target.value)){
@@ -46,8 +65,10 @@ const DogCreate = () => {
         alert("The dog was created")
         setInput({
             name: "",
-            height: 0,
-            weight: 0,
+            height_min: 0,
+            height_max: 0,
+            weight_min: 0,
+            weight_max: 0,
             life_span: 0,
             temperament: []
         })
@@ -74,35 +95,60 @@ const DogCreate = () => {
                 </Link>
             </div>
             <div>
-                <form onSubmit={d => handleSubmit(d)}>
+                <form onSubmit={event => handleSubmit(event)}>
                     <div>
                         <h3>Name:</h3>
-                        <input required type="text" value={input.name} onChange={d => handleChange(d)}/>
+                        <input required type="text" value={input.nameInput} onChange={event => handleChangeName(event)} placeholder="Type"/>
                     </div>
                     <div>
-                        <h3>Height:</h3>
+                        <h3>Height min:</h3>
                         <input required 
                         name="height"
-                        min="0" type="number" value={input.height} onChange={d => handleChange(d)}/>
+                        min="0" 
+                        type="number" 
+                        value={input.height} 
+                        onChange={d => handleChange(d)}/>
+                        
+                        <h3>Height Max:</h3>
+                        <input required 
+                        name="height"
+                        min="0" 
+                        type="number" 
+                        value={input.height} 
+                        onChange={d => handleChange(d)}/>
                     </div>
                     <div>
-                        <h3>Weight:</h3>
-                        <input required 
+                        <h3>Weight Min:</h3>
+                        <input 
+                        required 
                         name="weight"
-                        min="0" type="number" value={input.weight} onChange={d => handleChange(d)}/>
+                        min="0" 
+                        type="number" 
+                        value={input.weight} 
+                        onChange={d => handleChange(d)}/>
+                        <h3>Weight Max:</h3>
+                        <input 
+                        required 
+                        name="weight"
+                        min="0" 
+                        type="number" 
+                        value={input.weight} 
+                        onChange={d => handleChange(d)}/>
                     </div>
                     <div>
                         <h3>Life Span:</h3>
                         <input required 
-                        name="height"
-                        min="0" type="number" value={input.life_span} onChange={d => handleChange(d)}/>
+                        name="life_span"
+                        min="0" 
+                        type="number" 
+                        value={input.life_span} onChange={d => handleChange(d)}/>
                     </div>
                     <div></div>
                     <div>
                         <h3>TEMPERAMENTS</h3>
                         <select onChange={handleSelect}>
-                            <option value="all" disabled selected defaultValue>
-                                Prototemperament
+                            <option value="all" disabled >
+                                temperament
                             </option>
                             {
                             allTemperaments.map(t => {

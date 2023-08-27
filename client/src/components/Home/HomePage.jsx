@@ -21,14 +21,17 @@ const Home = () => {
     const [orden, setOrden] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
     const [dogsPerPage, setDogsPerPage] = useState(8);
-    const indexLastDog = currentPage * dogsPerPage;
-    const indexFirstDog = indexLastDog - dogsPerPage;
-    const currentDogs = allDogs.slice(indexFirstDog, indexLastDog)
+
 
     const pagination = (pageNumber) => {
         setCurrentPage(pageNumber)
         setDogsPerPage(8);
     }
+
+    const currentDogs = allDogs.slice(
+        (currentPage - 1) * dogsPerPage,
+        currentPage * dogsPerPage
+    )
 
     useEffect(() => {
         dispatch(getAllDogs());
@@ -36,7 +39,9 @@ const Home = () => {
     }, [dispatch])
 
     const handleClick = () => {
-        window.location.reload(false)
+        dispatch(getAllDogs());
+        setCurrentPage(1);
+        setOrden("");
     }
 
     const handlerFilterCreated = (event) => {
@@ -44,9 +49,9 @@ const Home = () => {
         setCurrentPage(1)
     }
 
-    const handlerFilterTemperament = (dog) => {
-        dog.preventDefault();
-        dispatch(filterTemperament(dog.target.value))
+    const handlerFilterTemperament = (event) => {
+        // event.preventDefault();
+        dispatch(filterTemperament(event.target.value))
         setCurrentPage(1)
     }
 
@@ -54,15 +59,15 @@ const Home = () => {
         const selectedValue = event.target.value
         dispatch(orderByName(selectedValue))
         setCurrentPage(1)
-        setOrden(`Ordenado ${selectedValue}`)
+        setOrden(`Ordenado de la ${selectedValue}`)
     }
 
     
 
-    const handlerFilterByWeight = (dog) => {
-        dispatch(orderByWeight(dog.target.value))
+    const handlerFilterByWeight = (event) => {
+        dispatch(orderByWeight(event.target.value))
         setCurrentPage(1)
-        setOrden(`Ordenado ${dog.target.value}`)
+        setOrden(`Ordenado de ${event.target.value}`)
     }
 
 
@@ -84,16 +89,18 @@ const Home = () => {
                 <div>
                     <SearchBar pagination={pagination} />
                     <div>
-                        <select onChange={(event) => handlerFilterByName(event)} value="Select">
+                        <select onChange={(event) => handlerFilterByName(event)}>
                             <option disabled value="Order" >Order by name</option>
-                            <option key={1} value="A-Z">A-Z</option>
+                            <option key={3} value="A-Z">A-Z</option>
                             <option key={2} value="Z-A">Z-A</option>
                         </select>
 
+                        
+
                         <select onChange={(event) => handlerFilterByWeight(event)}>
                             <option disabled value="Order" >Order by weight</option>
-                            <option key={1} value="weight">Max</option>
-                            <option key={2} value="weight">Min</option>
+                            <option key={1} value="Max">Max</option>
+                            <option key={2} value="Min">Min</option>
                         </select>
 
                         <select onChange={(event) => handlerFilterCreated(event)}>

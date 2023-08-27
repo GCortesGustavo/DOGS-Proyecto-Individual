@@ -21,6 +21,12 @@ const initialState = {
     dogDetail: [],
 }
 
+const calculateAverage = (dog) => {
+    const [min, max ] = dog.split(" - ")
+    const average = (min + max ) / 2;
+    return average
+}
+
 //REDUCER
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -61,6 +67,7 @@ const reducer = (state = initialState, action) => {
 
         case ORDER_BY_NAME:
             //Ordenar los perros por nombre
+            console.log(action.payload);
             const filterDogs = action.payload === "A-Z" ? state.dogs.sort((a,b) => {
                 if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
                 if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
@@ -75,6 +82,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 dogs: filterDogs,
             };
+            
 
         case FILTER_CREATED:
             const allDogs = state.allDogs;
@@ -84,18 +92,18 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 dogs: action.payload === "all" ? state.allDogs : filterCreated
             };
-
-            case ORDER_BY_WEIGHT:
-                const allDogWeight = state.allDogs.filter(dog => dog.weight);
-                const filterWeight = action.payload === "weight" ? allDogWeight.sort((a, b) => {return a.weight - b.weight})
-                : allDogWeight.sort((a, b) => {
-                    return a.weight - b.weight
-                }).reverse()
-
-                return{
+            
+        case ORDER_BY_WEIGHT:
+                    const dogs = state.allDogs.filter((dog) => dog.weight);
+                    const filterWeight =
+                    action.payload === "Max"
+                        ? dogs.sort((a, b) => calculateAverage(b.weight) - calculateAverage(a.weight))
+                        : dogs.sort((a, b) => calculateAverage(a.weight) - calculateAverage(b.weight));
+                    return {
                     ...state,
-                    dogs: filterWeight
-                }
+                    dogs: filterWeight,
+                    };
+
 
         case FILTER_TEMPERAMENT:
             const allDogs2 = state.allDogs;

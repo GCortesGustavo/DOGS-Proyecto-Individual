@@ -11,7 +11,7 @@ const Card = ({image, name, temperament, weight, id}) => {
 
             <div>
                 <div>
-                    <Link to={`/home/dogs/${id}`}> 
+                    <Link to={`/detail/${id}`}> 
                     <h3>{name}</h3>
                     </Link>
                     <h2>{temperament}</h2>
