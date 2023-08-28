@@ -88,7 +88,7 @@ const Home = () => {
                     <SearchBar pagination={pagination} />
                     <div>
                         <select onChange={(event) => handlerFilterByName(event)}>
-                            <option disabled value="Order" >Order by name</option>
+                            <option key={1} disabled value="Order" >Order by name</option>
                             <option key={3} value="A-Z">A-Z</option>
                             <option key={2} value="Z-A">Z-A</option>
                         </select>
@@ -96,26 +96,35 @@ const Home = () => {
                         
 
                         <select onChange={(event) => handlerFilterByWeight(event)}>
-                            <option disabled value="Order" >Order by weight</option>
+                            <option key={3} disabled value="Order" >Order by weight</option>
                             <option key={1} value="Max">Max</option>
                             <option key={2} value="Min">Min</option>
                         </select>
 
                         <select onChange={(event) => handlerFilterCreated(event)}>
-                            <option disabled value="Order" >Order by created</option>
+                            <option key={4} disabled value="Order" >Order by created</option>
                             <option key={1} value="all">ALL</option>
                             <option key={2} value="created">Created</option>
                             <option key={3} value="api">api</option>
                         </select>
 
-                        <select onChange={(event) => handlerFilterTemperament(event)}>
-                            <option disabled value="Temperaments" >Temperaments</option>
+                        {/* <select onChange={(event) => handlerFilterTemperament(event)}>
+                            <option key={2} disabled value="Temperaments" >Temperaments</option>
                             <option key={1 + "e"} value="all">All</option>
                             {
                                 allTemperaments.map(temp => (
                                     <option value={temp.name} key={temp.id}>{temp.name}</option>
                                     ))
                                 }
+                        </select> */}
+                        <select onChange={(event) => handlerFilterTemperament(event)}>
+                            <option key={2} disabled value="Temperaments">Temperaments</option>
+                            <option key={1 + "e"} value="all">All</option>
+                            {allTemperaments.map((temp, index) => (
+                                <option value={temp.name} key={index}>
+                                    {temp.name}
+                                </option>
+                            ))}
                         </select>
                         {orden && <p>{orden}</p>}
                     </div>

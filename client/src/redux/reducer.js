@@ -67,7 +67,6 @@ const reducer = (state = initialState, action) => {
 
         case ORDER_BY_NAME:
             //Ordenar los perros por nombre
-            console.log(action.payload);
             const filterDogs = action.payload === "A-Z" ? state.dogs.sort((a,b) => {
                 if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
                 if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
