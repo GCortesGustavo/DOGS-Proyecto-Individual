@@ -1,7 +1,6 @@
 import React from "react"; 
 import { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-
 import { Link } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 import { filterCreateDog, 
@@ -12,6 +11,9 @@ import { filterCreateDog,
     orderByWeight } from "../../redux/actions";
 import Pagination from "../Pagination/Pagination";
 import Card from "../Card/Card";
+import Styles from "./HomePage.module.css";
+
+
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -70,7 +72,7 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div className={Styles.background}>
             <header>
                     <div>
                         <Link to="/">

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getDogsName } from "../../redux/actions";
-
+import Styles from "./SearchBar.module.css"
 
 const SearchBar = ({pagination}) => {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const SearchBar = ({pagination}) => {
     }
 
     return(
-        <div>
+        <div className={Styles.background}>
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 

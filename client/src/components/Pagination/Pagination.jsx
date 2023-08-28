@@ -1,5 +1,5 @@
 import React from "react";
-
+import Styles from "./Pagination.module.css"
 
 const Pagination = ({dogsPerPage, allDogs, pagination}) => {
     const pageNumbers= [];
@@ -9,8 +9,8 @@ const Pagination = ({dogsPerPage, allDogs, pagination}) => {
     }
 
     return(
-        <nav>
-            <ul>
+        <nav >
+            <ul className={Styles.container}>
                 {
                     pageNumbers?.map((number) => {
                         return(

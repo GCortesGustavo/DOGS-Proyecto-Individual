@@ -4,12 +4,12 @@ import {Link} from "react-router-dom";
 import validate from "./validate";
 import { postDog, getAllTemperament } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import Styles from "./DogCreate.module.css"
 
 const DogCreate = () => {
     const dispatch = useDispatch();
     const allTemperaments = useSelector((state) => state.temperaments)
     const [errors, setErrors] = useState({})
-    //const [nameInput, setNameInput] = useState("")
     const [input, setInput] = useState({
         name: "",
         height_min: 0,
@@ -31,48 +31,55 @@ const DogCreate = () => {
         }
     }
 
-    // const handleChangeName = (event) => {
-    //     if(event.target.value === event.target.name) {
-    //         setNameInput(event.target.value)
-    //     } else {
-    //         setInput({
-    //             ...input,
-    //             [event.target.name] : event.target.value,
-    //         });
-    //     }
-    //     setErrors(validate({
-    //         ...input,
-    //         [event.target.name] : event.target.value
-    //     }))
-    // }
 
     const handleChange = (event) => {
         setInput({
             ...input,
             [event.target.name]: event.target.value,
         });
-        setErrors(validate({
-            ...input,
-            [event.target.name]: event.target.value,
-        }));
+        // setErrors(validate({
+        //     ...input,
+        //     [event.target.name]: event.target.value,
+        // }));
     };
     
 
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault()
+    //     dispatch(postDog(input));
+    //     alert("The dog was created")
+    //     setInput({
+    //         name: "",
+    //         height_min: 0,
+    //         height_max: 0,
+    //         weight_min: 0,
+    //         weight_max: 0,
+    //         life_span: 0,
+    //         temperament: []
+    //     })
+    //     window.location.href = "/home";
+    // }
+
     const handleSubmit = (event) => {
-        event.preventDefault()
-        dispatch(postDog(input));
-        alert("The dog was created")
-        setInput({
-            name: "",
-            height_min: 0,
-            height_max: 0,
-            weight_min: 0,
-            weight_max: 0,
-            life_span: 0,
-            temperament: []
-        })
-        window.location.href = "/home";
+        event.preventDefault();
+        const validationErrors = validate(input);
+        setErrors(validationErrors);
+        if(Object.keys(validationErrors).length === 0) {
+            dispatch(postDog(input));
+            alert("The dow was created")
+            setInput({
+                name: "",
+                height_min: 0,
+                height_max: 0,
+                weight_min: 0,
+                weight_max: 0,
+                life_span: 0,
+                image: "",
+                temperament: []
+            });
+            window.location.href = "/home";
+        }
     }
 
     const handleErase = (dog) => {
@@ -87,7 +94,7 @@ const DogCreate = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className={Styles.background}>
             <h1>CREATE DOG</h1>
             <div>
                 <Link to="/home">
@@ -103,7 +110,7 @@ const DogCreate = () => {
                             type="text" 
                             value={input.name} 
                             onChange={handleChange} 
-                            placeholder="Type"/>
+                            placeholder="Type a name of dog"/>
                     </div>
                     <div>
                         <h3>Height min:</h3>
@@ -149,12 +156,20 @@ const DogCreate = () => {
                         value={input.life_span} 
                         onChange={handleChange}/>
                     </div>
+                    <div>
+                        <h3>Image:</h3>
+                        <input  
+                        name="image" 
+                        type="url" 
+                        value={input.image} 
+                        onChange={handleChange}/>
+                    </div>
                     <div></div>
                     <div>
                         <h3>TEMPERAMENTS</h3>
                         <select onChange={handleSelect}>
                             <option value="all" disabled >
-                                temperament
+                                Temperaments
                             </option>
                             {
                             allTemperaments.map((t) => {
