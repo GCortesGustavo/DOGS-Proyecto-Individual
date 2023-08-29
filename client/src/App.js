@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import DogCreate from './components/DogCreate/DogCreate';
 import HomePage from './components/Home/HomePage';
 import Detail from './components/Detail/detail';
+import Error404 from './components/Error404/Error404';
 
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
 
           <Route path='/dogcreate' element={<DogCreate/>}/>
 
-          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/home/detail/:id" element={<Detail />} />
+
+          <Route path={"*"} element={<Error404 />}/>
 
       </Routes>
     </div>

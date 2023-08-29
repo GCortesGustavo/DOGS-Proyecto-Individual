@@ -22,8 +22,14 @@ const initialState = {
 }
 
 const calculateAverage = (dog) => {
-    const [min, max ] = dog.split(" - ")
-    const average = (min + max ) / 2;
+    const [ min, max ] = dog.split(" - ")
+    const minimo = Number(min)
+    const maximo = Number(max)
+    //console.log(typeof minimo);
+    let average = (minimo + maximo ) / 2;
+    if(average === "NaN") {
+        average = 100
+    }
     return average
 }
 
@@ -50,7 +56,7 @@ const reducer = (state = initialState, action) => {
             }
             
         case GET_DETAIL:
-            // Se obtienen la descripcion de cada raza seleccionada
+            // Se obtienen el detalle de cada raza seleccionada
             return{
                 ...state,
                 dogDetail: action.payload,
@@ -84,7 +90,7 @@ const reducer = (state = initialState, action) => {
             
 
         case FILTER_CREATED:
-            //orden por api o db
+            //filtro por api o db
             const allDogs = state.allDogs;
             const filterCreated = action.payload === "created" ? allDogs.filter(dog => dog.createdInDb) : allDogs.filter(dog => !dog.createInDb)
 
@@ -93,6 +99,7 @@ const reducer = (state = initialState, action) => {
                 dogs: action.payload === "all" ? state.allDogs : filterCreated
             };
             
+
         case ORDER_BY_WEIGHT:
             //orden por peso
                 const dogs = state.allDogs.filter((dog) => dog.weight);

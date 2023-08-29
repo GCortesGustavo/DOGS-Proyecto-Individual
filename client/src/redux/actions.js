@@ -13,6 +13,7 @@ import {
     CLEAR_DETAIL
 } from "./action-types";
 
+
 //Obtener
 const URL = "http://localhost:3001"
 // Action para obtener datos desde el back el cual esta corriendo en el puerto 3001
@@ -63,14 +64,16 @@ export const getDetail = (id) => {
     // Enviar el id al reducer para crear la seccion de Description
     return async function (dispatch) {
         try {
-            const json = await axios.get(`/dogs/${id}`);
+            const response = await axios.get(`http://localhost:3001/dogs/${id}`)
+            console.log(response);
+            const data= response.data
             return dispatch ({
                 type: GET_DETAIL,
-                payload: json.data
+                payload: data
             })
         }
         catch(error) {
-            console.log(error);
+            console.log("Error fetching dog details:",error);
         }
     }
 }
@@ -134,10 +137,3 @@ export const clearDetail = () => {
     }
 }
 
-//TODAVIA NO LA USO
-// export function filterCreated(payload){ 
-//     return {    
-//         type: FILTER_CREATED,
-//         payload
-//     }
-// }

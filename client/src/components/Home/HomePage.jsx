@@ -12,6 +12,7 @@ import { filterCreateDog,
 import Pagination from "../Pagination/Pagination";
 import Card from "../Card/Card";
 import Styles from "./HomePage.module.css";
+import Loading from "../Loading/Loading";
 
 
 
@@ -73,29 +74,27 @@ const Home = () => {
 
     return (
         <div className={Styles.background}>
-            <header>
-                    <div>
+            <header className={Styles.Header}>
+                    <div >
                         <Link to="/">
                             <button>Dog</button>
                         </Link>
                     </div>
                 <div>
-                    <div>
+                    <div >
                         <button onClick={handleClick}>Reset</button>
                         <Link to="/dogcreate">
                             <button>Create DOG</button>
                         </Link>
                     </div>
-                <div>
                     <SearchBar pagination={pagination} />
+                <div>
                     <div>
                         <select onChange={(event) => handlerFilterByName(event)}>
                             <option key={1} disabled value="Order" >Order by name</option>
                             <option key={3} value="A-Z">A-Z</option>
                             <option key={2} value="Z-A">Z-A</option>
                         </select>
-
-                        
 
                         <select onChange={(event) => handlerFilterByWeight(event)}>
                             <option key={3} disabled value="Order" >Order by weight</option>
@@ -110,15 +109,6 @@ const Home = () => {
                             <option key={3} value="api">api</option>
                         </select>
 
-                        {/* <select onChange={(event) => handlerFilterTemperament(event)}>
-                            <option key={2} disabled value="Temperaments" >Temperaments</option>
-                            <option key={1 + "e"} value="all">All</option>
-                            {
-                                allTemperaments.map(temp => (
-                                    <option value={temp.name} key={temp.id}>{temp.name}</option>
-                                    ))
-                                }
-                        </select> */}
                         <select onChange={(event) => handlerFilterTemperament(event)}>
                             <option key={2} disabled value="Temperaments">Temperaments</option>
                             <option key={1 + "e"} value="all">All</option>
@@ -133,20 +123,19 @@ const Home = () => {
                 </div>
             </div>    
             </header>
-            <Pagination dogsPerPage={dogsPerPage} allDogs={allDogs.length} pagination={pagination}/>
-                <div>
+                <div >
                     {Object.keys(allDogs).length ?
-                        <div>
+                        <div className={Styles.Cards}>
                             {
                                 currentDogs?.map((dog) => {
                                     return (
-                                        <div key={dog.id}>
+                                        <div key={dog.id} className={Styles.Card} >
                                             <Card 
                                                 id={dog.id} 
                                                 image={dog.image} 
                                                 name={dog.name} 
-                                                temperament={dog.temperament} 
-                                                weight={dog.weight} 
+                                                // temperament={dog.temperament} 
+                                                weight={dog.weight}
                                             />
                                         </div>
                                     );
@@ -154,9 +143,11 @@ const Home = () => {
                             }
                         </div> : 
                             <div>
-                                <h1>Loading...</h1>
+                                {/* <h1>Loading...</h1> */}
+                                <Loading />
                             </div>
                     }
+                    <Pagination  dogsPerPage={dogsPerPage} allDogs={allDogs.length} pagination={pagination}/>
                 </div>
         </div>
     )

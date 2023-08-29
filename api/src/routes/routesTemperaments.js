@@ -37,16 +37,16 @@ temperaments.get("/dog/", async (req, res) => {
     res.status(200).json(dogSearchResult)
 })
 
-temperaments.post("/temperament/:temperament", async(req, res) => {
-    try {
-        const newTemperament = req.params.temperament;
-        const postedTemp = await Temperament.create({
-            name: newTemperament,
-        })
-        return res.status(200).json(postedTemp)
-    } catch (error) {
-        res.status(404).send(error)
-    }
-})
+// temperaments.post("/temperament/:temperament", async(req, res) => {
+//     try {
+//         const newTemperament = req.params.temperament;
+//         const postedTemp = await Temperament.create({
+//             name: newTemperament,
+//         })
+//         return res.status(200).json(postedTemp)
+//     } catch (error) {
+//         res.status(404).send(error)
+//     }
+// })
 
 module.exports = temperaments;

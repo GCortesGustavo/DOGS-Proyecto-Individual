@@ -1,0 +1,56 @@
+.detailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    /* background-color: #CEDEBD; */
+    background-image: url("https://i.pinimg.com/564x/80/9b/ba/809bba71e562fc3b475f090621238a91.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container{
+    background-color: #435334;
+    border-radius: 10px;
+}
+
+.homeButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.dogDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    color: #FAF1E4;
+}
+
+.dogImage {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.dogInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FAF1E4;
+}
+
+.temperaments {
+    margin-top: 10px;
+}
+
+.loading {
+    margin-top: 20px;
+}

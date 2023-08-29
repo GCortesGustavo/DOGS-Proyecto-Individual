@@ -1,54 +1,66 @@
 import React from "react";
 import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllDogs, clearDetail} from "../../redux/actions";
+import {
+    //getAllDogs, 
+    clearDetail, 
+    getDetail} from "../../redux/actions";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Loading from "../Loading/Loading";
+import style from "./detail.module.css";
 
-const Detail = (props) => {
+const Detail = () => {
     const dispatch = useDispatch();
-    const dog = useSelector((state) => state.dogDetail || [])
-
+    const { id } = useParams()
+    
     useEffect(() => {
-        if(props.match?.params?.id) {
-            dispatch(getAllDogs(props.match.params.id));
+        if(id) {
+            dispatch(getDetail(id));
         }
         return () => dispatch(clearDetail())
-    }, [dispatch, props.match?.params.id])
+    }, [dispatch, id])
+    
+    const dog = useSelector((state) => state.dogDetail)
 
     return (
-        <div>
+        <div className={style.detailContainer}>
+            <div className={style.container}>
             <Link to="/home">
-                <button>Go home</button>
+                <button className={style.homeButton}>Go home</button>
             </Link>  
-        {Object.keys(dog).length ? (
-        <div>
+            
+        {Object.keys(dog) ? (
+        <div className={style.dogDetails}>
             <img
             src={
-                dog?.image
+                dog.image
                 ? dog.image
                 : (dog.image =
-                    "https://www.nextdayflyers.com/blog/wp-content/uploads/2014/10/Pet-Flyer-1-768x1024.jpg")
+                    "https://www.helpguau.com/wp-content/uploads/2019/06/perro-buscando.jpg")
             }
-            alt="woof"
-            width="400"
-            height="400"
+            alt="perro"
+            width="200"
+            height="200"
+            className={style.dogImage}
             />
-        <div>
-                <h1> Name : {dog?.name}</h1>
-                <h2> Life Temp : {dog?.life_stamp}</h2>
-                <h2> Weight :{dog?.weight} KG</h2>
-                <h2> Height :{dog?.height} CM</h2>
-            <div>
+        <div className={style.dogInfo}>
+                <h1> Name : {dog.name}</h1>
+                <h2> Life Span : {dog.life_span}</h2>
+                <h2> Weight :{dog.weight} KG</h2>
+                <h2> Height :{dog.height} CM</h2>
+            <div className={style.temperament}>
                 <h2>Temperaments :</h2>
                 <h2>{dog?.temperament}</h2>
             </div>
         </div>
         </div>
         ) : (
-        <div>
-            <h1>Cargandooo...</h1>
+        <div className={style.loading}>
+            <Loading />
         </div>
     )}
+    </div>
         </div>
     )
 }

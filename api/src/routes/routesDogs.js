@@ -34,10 +34,10 @@ dogs.post("/dogs", async(req, res)=>{
     const { name, height, weight, life_span} = req.body;
     const temperament = await Temperament.findAll();
     const dogCreate = await Dog.create({ 
-        name: name,
-        height: parseInt(height),
-        weight: parseInt(weight),
-        life_span: parseInt(life_span),
+        name,
+        height,
+        weight,
+        life_span,
         createdInBd: true,
         image: "https://www.dogbreedslist.info/uploads/dog-pictures/beagle-2.jpg",
     })

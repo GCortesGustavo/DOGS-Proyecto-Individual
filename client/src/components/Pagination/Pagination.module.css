@@ -1,4 +1,33 @@
 .container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    list-style: none;
 }
+
+.point {
+    list-style: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 35px;
+    width: 5vh;
+    height: 5vh;
+    transition: .5s, color .10s;
+        -webkit-transition: .5s, color .10s;
+        -moz-transition: .5s, color .10s;
+}
+
+.point:hover{
+    transform: scale3d(1.5, 1.5, 0.3);
+        -webkit-transform: scale3d(1.5, 1.5, 0.3);
+        -moz-transform: scale3d(1.5, 1.5, 0.3);
+}
+
+.button {
+    list-style: none;
+    border-radius: 5px;
+    background-color: darkgreen;
+    color: #FAF1E4;
+    width: 40px;
+    height: 30px
+}
+

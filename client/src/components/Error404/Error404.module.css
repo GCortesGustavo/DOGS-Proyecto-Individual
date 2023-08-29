@@ -1,0 +1,33 @@
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.errorImage {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.errorMessage {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: crimson;
+}
+
+.homeLink {
+    text-decoration: none;
+}
+
+.homeButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
