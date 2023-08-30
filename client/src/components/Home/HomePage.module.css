@@ -8,7 +8,8 @@
     background-color: #435334;
     font-family: 'Bebas Neue', sans-serif;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: row;
     align-items: center;
     padding: 10px;
     margin-bottom: 20px;
@@ -27,8 +28,8 @@
     margin: 20px;
     border: 1px solid #435334;
     padding: 20px;
-    width: 264px;
-    height: 334px;
+    width: 310px;
+    height: 470px;
     margin: 40px;
     background-color: #CEDEBD;
     border-radius: 28px;
@@ -44,6 +45,15 @@
     .Card {
     max-width: calc(50% - 20px);
     }
+}
+
+
+.filtross {
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    flex-direction: row;
+    margin: 10px;
 }
 
 

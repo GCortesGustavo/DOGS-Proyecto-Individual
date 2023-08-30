@@ -22,6 +22,8 @@ const Detail = () => {
     }, [dispatch, id])
     
     const dog = useSelector((state) => state.dogDetail)
+    const temp = dog?.temperament?.join(", ");
+
 
     return (
         <div className={style.detailContainer}>
@@ -45,13 +47,14 @@ const Detail = () => {
             className={style.dogImage}
             />
         <div className={style.dogInfo}>
+                <h1> ID: {dog.id}</h1>
                 <h1> Name : {dog.name}</h1>
                 <h2> Life Span : {dog.life_span}</h2>
                 <h2> Weight :{dog.weight} KG</h2>
                 <h2> Height :{dog.height} CM</h2>
             <div className={style.temperament}>
                 <h2>Temperaments :</h2>
-                <h2>{dog?.temperament}</h2>
+                <h2>{temp}</h2>
             </div>
         </div>
         </div>
@@ -66,3 +69,4 @@ const Detail = () => {
 }
 
 export default Detail
+

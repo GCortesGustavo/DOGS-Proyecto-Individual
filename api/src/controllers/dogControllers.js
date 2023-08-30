@@ -32,9 +32,15 @@ const getDBInfoDog = async () =>{
                 attributes: []
             }
         }
-    });
+    })
+    // .then(dogs => dogs.map(dog => ({
+    //     ...dog.dataValues,
+    //     temperament: dog.temperaments.map(temp => temp.name).join(', ')
+    // })));
+    ;
     return dogsDB
 };
+
 
 const getAllDogs = async () => {
     const apiInfo = await getApiDogs();

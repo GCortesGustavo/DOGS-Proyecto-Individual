@@ -8,7 +8,7 @@ import {
     FILTER_CREATED,
     ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
-    //POST_DOG,
+    POST_DOG,
     //DELETE_DOG,
     CLEAR_DETAIL
 } from "./action-types";
@@ -65,7 +65,7 @@ export const getDetail = (id) => {
     return async function (dispatch) {
         try {
             const response = await axios.get(`http://localhost:3001/dogs/${id}`)
-            console.log(response);
+            //console.log(response);
             const data= response.data
             return dispatch ({
                 type: GET_DETAIL,
@@ -81,9 +81,17 @@ export const getDetail = (id) => {
 
 //para crear un nuevo perro
 export const postDog = (data) => {
-        return async function () {
-            const posted = await axios.post('/dogs', data)
-            return posted
+        return async function (dispatch) {
+            try {
+                const posted = await axios.post('http://localhost:3001/dogs', data)
+                return dispatch({
+                    type: POST_DOG,
+                    payload: posted.data
+                })
+            } catch (error) {
+                console.log(error);
+            }
+            
         }
 };
 

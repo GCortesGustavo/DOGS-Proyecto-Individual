@@ -10,16 +10,22 @@ const DogCreate = () => {
     const dispatch = useDispatch();
     const allTemperaments = useSelector((state) => state.temperaments)
     const [errors, setErrors] = useState({})
+    const [ dogTemperament , setDogTemperaments] = useState({temperament : ""})
     const [input, setInput] = useState({
         name: "",
-        height_min: 0,
-        height_max: 0,
-        weight_min: 0,
-        weight_max: 0,
+        height: "",
+        weight: "",
         life_span: 0,
         image: "",
         temperament: []
     })
+
+    // const handleTemperament = (event) => {
+    //     event.preventDefault();
+    //     setDogTemperaments(prevState => {
+    //         return { ...prevState, [event.target.name]: event.target.value }
+    //     });
+    // }
     
     const handleSelect = (event) => {
         const selectedValue = event.target.value
@@ -31,36 +37,57 @@ const DogCreate = () => {
         }
     }
 
-
+    
     const handleChange = (event) => {
         setInput({
             ...input,
             [event.target.name]: event.target.value,
         });
+        const inputCopy = {...input,[event.target.name] : event.target.value}
+        const validation = validate(inputCopy);
+        setErrors(validation)
         
     };
-    
 
+    
+    
+    
     const handleSubmit = (event) => {
+        const formData = new FormData(event.target)
         event.preventDefault();
+        const dog = Object.fromEntries(formData.entries());
         const validationErrors = validate(input);
         setErrors(validationErrors);
-        if(Object.keys(validationErrors).length === 0) {
-            dispatch(postDog(input));
+        if(Object.keys(validationErrors) === 0) {
             alert("The dow was created")
             setInput({
-                name: "",
-                height_min: 0,
-                height_max: 0,
-                weight_min: 0,
-                weight_max: 0,
-                life_span: 0,
-                image: "",
-                temperament: []
+            name: dog.name,
+            height: `${dog.height} - ${dog.height}`,
+            weight: `${dog.weight} - ${dog.weight}`,
+            life_span: dog.life_span,
+            image: dog.image,
+            temperament: [dog.temperament]
             });
+            
             window.location.href = "/home";
         }
+        const doggy = {
+            name: dog.name,
+            height: `${dog.height_min} - ${dog.height_max}`,    
+            weight: `${dog.weight_min} - ${dog.weight_max}`,
+            life_span: dog.life_span,
+            image: dog.image,
+            temperament: input.temperament
+
+        }
+        console.log(doggy);
+        console.log(doggy.temperament);
+        dispatch(postDog(doggy));
     }
+
+    
+
+    
 
     const handleErase = (dog) => {
         setInput({
@@ -72,6 +99,7 @@ const DogCreate = () => {
     useEffect(() => {
         dispatch(getAllTemperament())
     }, [dispatch])
+    
 
     return (
         <div className={Styles.background}>
@@ -88,6 +116,7 @@ const DogCreate = () => {
                         <h3>Name:</h3>
                         <input 
                             name="name"
+                            key="1"
                             required 
                             type="text" 
                             value={input.name} 
@@ -97,6 +126,7 @@ const DogCreate = () => {
                     <div>
                         <h3>Height min:</h3>
                         <input required 
+                        key="2"
                         name="height_min"
                         min="0" 
                         type="number" 
@@ -105,6 +135,7 @@ const DogCreate = () => {
                         
                         <h3>Height Max:</h3>
                         <input required 
+                        key="3"
                         name="height_max"
                         min="0" 
                         type="number" 
@@ -114,6 +145,7 @@ const DogCreate = () => {
                     <div>
                         <h3>Weight Min:</h3>
                         <input 
+                        key="4"
                         required 
                         name="weight_min"
                         min="0" 
@@ -123,6 +155,7 @@ const DogCreate = () => {
 
                         <h3>Weight Max:</h3>
                         <input 
+                        key="5"
                         required 
                         name="weight_max"
                         min="0" 
@@ -133,6 +166,7 @@ const DogCreate = () => {
                     <div>
                         <h3>Life Span:</h3>
                         <input required 
+                        key="6"
                         name="life_span"
                         min="0" 
                         type="number" 
@@ -142,6 +176,7 @@ const DogCreate = () => {
                     <div>
                         <h3>Image:</h3>
                         <input  
+                        key="7"
                         name="image" 
                         type="url" 
                         value={input.image} 
@@ -164,28 +199,12 @@ const DogCreate = () => {
                         </select>
                     </div>
                     {
-                        errors && 
-                        (errors.name ||
-                        errors.height_min ||
-                        errors.height_max ||
-                        errors.weight_min ||
-                        errors.weight_max ||
-                        errors.life_span||
-                        !input.name.length ||
-                        input.height <=0 ||
-                        input.weight <= 0||
-                        input.life_span <= 0 ||
-                        !input.temperament.length) 
+                        (errors.length < 1)
                         ?
                         <div>The dog cant be Created Yed</div>
                         :
                         <button type="submit"> Create</button>
                     }
-                    {/* {Object.keys(errors).length > 0 ? (
-                        <div>The dog can't be created yet</div>
-                        ) : (
-                        <button type="submit"> Create</button>
-                    )} */}
                 </form>
                     <div>
                         {input.temperament.map((d, i) => {
@@ -204,7 +223,7 @@ const DogCreate = () => {
                     <div>
                         <h2>ERRORS:</h2>
                     </div>
-                    <div>
+                    <div className={Styles.container}>
                         <h2>{errors.name && (<p>{errors.name}</p>)}</h2>
                         <h2>{errors.height_min && (<p>{errors.height_min}</p>)}</h2>
                         <h2>{errors.height_max && (<p>{errors.height_max}</p>)}</h2>

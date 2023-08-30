@@ -18,7 +18,7 @@ const initialState = {
     dogs: [],
     temperaments: [],
     allDogs: [],
-    dogDetail: [],
+    dogDetail: {},
 }
 
 const calculateAverage = (dog) => {
@@ -92,7 +92,7 @@ const reducer = (state = initialState, action) => {
         case FILTER_CREATED:
             //filtro por api o db
             const allDogs = state.allDogs;
-            const filterCreated = action.payload === "created" ? allDogs.filter(dog => dog.createdInDb) : allDogs.filter(dog => !dog.createInDb)
+            const filterCreated = action.payload === "db" ? allDogs.filter(dog => dog.createdInDB) : allDogs.filter(dog => !dog.createdInDB)
 
             return {
                 ...state,
@@ -102,11 +102,11 @@ const reducer = (state = initialState, action) => {
 
         case ORDER_BY_WEIGHT:
             //orden por peso
-                const dogs = state.allDogs.filter((dog) => dog.weight);
+                //const dogs = state.allDogs.sort((dog) => dog.weight);
                 const filterWeight =
                 action.payload === "Max"
-                    ? dogs.sort((a, b) => calculateAverage(b.weight) - calculateAverage(a.weight))
-                    : dogs.sort((a, b) => calculateAverage(a.weight) - calculateAverage(b.weight));
+                    ? state.dogs.sort((a, b) => calculateAverage(b.weight) - calculateAverage(a.weight))
+                    : state.dogs.sort((a, b) => calculateAverage(a.weight) - calculateAverage(b.weight));
                 return {
                 ...state,
                 dogs: filterWeight,
@@ -136,7 +136,7 @@ const reducer = (state = initialState, action) => {
             return{ ...state};
 
         default:
-            return state; //Retorna el estado acutal
+            return state; //Retorna el estado actual
     }
 }
 

@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     life_span:{  
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     createdInDB:{

@@ -3,7 +3,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 const dogsRouter = require("../routes/routesDogs.js")
 const temperamentsRouter = require("../routes/routesTemperaments.js");
-// const breeds = require("./routesBreedsNOUSE.js");
+
 
 
 const router = Router();
@@ -13,6 +13,6 @@ const router = Router();
 
 router.use("/", dogsRouter);
 router.use("/", temperamentsRouter)
-// router.use("/", breeds)
+
 
 module.exports = router;

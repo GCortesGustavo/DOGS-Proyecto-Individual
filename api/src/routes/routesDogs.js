@@ -7,7 +7,7 @@ const { getAllDogs, getDBInfoDog, getApiDogs } = require("../controllers/dogCont
 
 dogs.use(express.json());
 
-//Ruta para traer los dogs, FUNCIONA
+//Ruta para traer los dogs
 dogs.get("/dogs", async(req, res) =>{
     const name = req.query.name
     try {
@@ -31,8 +31,7 @@ dogs.get("/dogs", async(req, res) =>{
 //Ruta para postear perros nuevos
 dogs.post("/dogs", async(req, res)=>{
     try{
-    const { name, height, weight, life_span} = req.body;
-    const temperament = await Temperament.findAll();
+    const { name, height, weight, life_span, temperament} = req.body;
     const dogCreate = await Dog.create({ 
         name,
         height,
@@ -41,7 +40,9 @@ dogs.post("/dogs", async(req, res)=>{
         createdInBd: true,
         image: "https://www.dogbreedslist.info/uploads/dog-pictures/beagle-2.jpg",
     })
-    await dogCreate.addTemperaments(temperament)
+    const temperamentFilter = await Temperament.findAll({
+        where: {name : temperament} })
+    await dogCreate.addTemperaments(temperamentFilter)
 
     res.status(200).json(dogCreate)
     } catch(error){
