@@ -1,14 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Styles from "./Card.module.css"
-import { useSelector } from "react-redux";
+
 
 const Card = ({image, name, temperament,  weight, id}) => {
-    
-    const dog = useSelector((state) => state.dogDetail)
-    const temp = dog?.temperament?.join(", ");
-
-    // console.log(temp);
     return (
         <div>
             <div>
@@ -32,8 +27,7 @@ const Card = ({image, name, temperament,  weight, id}) => {
                     <h3 className={Styles.titulo}>{name}</h3>
                     </Link>
                     <h2>{weight}kg</h2>
-                    {/* <h2>{temp}</h2> */}
-                    <h2>{temperament? temperament.join(", ") : "mal ahi"}</h2>
+                    <h2>{temperament? temperament.join(", ") : "[temperamentos]"}</h2>
                 </div>
             </div>
         </div>

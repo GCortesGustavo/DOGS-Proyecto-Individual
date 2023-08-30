@@ -33,10 +33,10 @@ const getDBInfoDog = async () =>{
             }
         }
     })
-    // .then(dogs => dogs.map(dog => ({
-    //     ...dog.dataValues,
-    //     temperament: dog.temperaments.map(temp => temp.name).join(', ')
-    // })));
+    .then(dogs => dogs.map(dog => ({
+        ...dog.dataValues,
+        temperament: dog.temperaments.map(temp => temp.name)
+    })));
     ;
     return dogsDB
 };

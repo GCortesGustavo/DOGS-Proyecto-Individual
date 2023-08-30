@@ -1,7 +1,7 @@
 const express = require("express");
 const dogs = express.Router();
 const { Dog, Temperament } = require("../db.js");
-const { getAllDogs, getDBInfoDog, getApiDogs } = require("../controllers/dogControllers.js");
+const { getAllDogs } = require("../controllers/dogControllers.js");
 
 
 
@@ -23,7 +23,7 @@ dogs.get("/dogs", async(req, res) =>{
                 res.status(200).send(response)
             }
         } catch (error) {
-            return res.status(404).json("There is no dog's with this name")
+            return res.status(404).json("There is no dog's")
         }
 });
 
@@ -61,7 +61,7 @@ dogs.get("/dogs/name", async (req, res) => {
             const dog = allDogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
             res.status(200).json(dog);
         } else {
-            res.status(404).send('faltan datos');
+            res.status(404).send('Missing data');
         }
     } catch (error) {
         res.status(500).send(error.message );
@@ -73,18 +73,15 @@ dogs.get("/dogs/:idRaza", async(req, res) => {
         try {
             let dog = null ;
             const { idRaza } = req.params;
-            const getDogs = await getApiDogs(); 
-            const getDogsDB = await getDBInfoDog();
+            const getAllDogys = await getAllDogs();
+
+            dog = await getAllDogys.find((perro) => perro.id == idRaza); 
             
-            dog = await getDogs.find((perro) => perro.id == idRaza); //TRAE LA INFO DE LA API
-            
-            if (!dog) {
-                dog = await getDogsDB.find((perro) => perro.id == idRaza);
-            } else {
-                res.json(dog);
-            }
+            if (dog) {
+                res.status(200).json(dog);
+            } 
     } catch (error) {
-        res.status(500).json({mensaje: "Error al obtener el detalle de la raza de perros"})
+        res.status(500).json({mensaje: "Error when obtaining the detail of the breed of dogs"})
     }
 })
 

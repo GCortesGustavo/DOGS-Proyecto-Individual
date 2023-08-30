@@ -15,9 +15,8 @@ export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 //POST
 export const POST_DOG = "POST_DOG" ; 
 
-//DELETE
-export const DELETE_DOG = "DELETE_DOG"; 
-export const CLEAR_DETAIL = "CLEAR_DETAIL"
+
+
 
 
 

@@ -9,13 +9,11 @@ import {
     ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
     POST_DOG,
-    //DELETE_DOG,
-    CLEAR_DETAIL
 } from "./action-types";
 
 
 //Obtener
-const URL = "http://localhost:3001"
+//const URL = "http://localhost:3001"
 // Action para obtener datos desde el back el cual esta corriendo en el puerto 3001
 export const getAllDogs = () => {
     return async function (dispatch) {
@@ -36,7 +34,7 @@ export const getAllDogs = () => {
 export const getAllTemperament = () => {
     // Obtengo todos los temperamentos de mi back
     return async function (dispatch) {
-        var json = await axios.get(`${URL}/temperament`)
+        var json = await axios.get(`http://localhost:3001/temperament`)
         return dispatch({
             type : GET_ALL_TEMPERAMENT,
             payload: json.data
@@ -65,7 +63,7 @@ export const getDetail = (id) => {
     return async function (dispatch) {
         try {
             const response = await axios.get(`http://localhost:3001/dogs/${id}`)
-            //console.log(response);
+            
             const data= response.data
             return dispatch ({
                 type: GET_DETAIL,
@@ -95,21 +93,6 @@ export const postDog = (data) => {
         }
 };
 
-// TODAVIA NO CREO LA RUTA DELETE
-
-// export function deleteDog(id){
-//     return async function (dispatch){
-//         try{
-//            await axios.delete(`/dogs/${id}`);
-//             return dispatch({
-//                 type: DELETE_DOG,
-//                 payload: id
-//             })
-//         } catch(error){
-//             alert('no se pudo borrar el perro')
-//         }
-//     }
-// }
 
 export function orderByWeight(payload){
     return {
@@ -139,9 +122,5 @@ export const filterCreateDog = (payload) => {
     }
 }
 
-export const clearDetail = () => {
-    return{
-        type: CLEAR_DETAIL
-    }
-}
+
 

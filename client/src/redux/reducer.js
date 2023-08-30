@@ -7,9 +7,7 @@ import {
     FILTER_CREATED,
     ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
-    POST_DOG,
-    //DELETE_DOG,
-    CLEAR_DETAIL
+    POST_DOG,  
 } from "./action-types";
 
 
@@ -25,7 +23,6 @@ const calculateAverage = (dog) => {
     const [ min, max ] = dog.split(" - ")
     const minimo = Number(min)
     const maximo = Number(max)
-    //console.log(typeof minimo);
     let average = (minimo + maximo ) / 2;
     if(average === "NaN") {
         average = 100
@@ -62,13 +59,6 @@ const reducer = (state = initialState, action) => {
                 dogDetail: action.payload,
             }
 
-
-
-        // case DELETE_DOG:
-        //   return {
-        //     ...state,
-        //     dogs: state.dogs.filter(e => e.id !== action.payload)
-        //   }
         
 
         case ORDER_BY_NAME:
@@ -102,7 +92,6 @@ const reducer = (state = initialState, action) => {
 
         case ORDER_BY_WEIGHT:
             //orden por peso
-                //const dogs = state.allDogs.sort((dog) => dog.weight);
                 const filterWeight =
                 action.payload === "Max"
                     ? state.dogs.sort((a, b) => calculateAverage(b.weight) - calculateAverage(a.weight))
@@ -125,12 +114,6 @@ const reducer = (state = initialState, action) => {
                 dogs: filteredTemp
             }
 
-        case CLEAR_DETAIL: {
-            return{
-                ...state,
-                dogDetail: {}
-            }
-        }    
 
         case POST_DOG:
             return{ ...state};

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {
     //getAllDogs, 
-    clearDetail, 
+    //clearDetail, 
     getDetail} from "../../redux/actions";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -18,7 +18,6 @@ const Detail = () => {
         if(id) {
             dispatch(getDetail(id));
         }
-        return () => dispatch(clearDetail())
     }, [dispatch, id])
     
     const dog = useSelector((state) => state.dogDetail)
