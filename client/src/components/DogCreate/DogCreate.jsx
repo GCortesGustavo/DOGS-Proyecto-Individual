@@ -92,16 +92,16 @@ const DogCreate = () => {
     return (
         <div className={Styles.background}>
             <div className={Styles.container}>
-            <h1>CREATE DOG</h1>
+            <h1 className={Styles.title}>CREATE DOG</h1>
             <div>
                 <Link to="/home">
-                    <button>HOME</button>
+                    <button className={Styles.create}>HOME</button>
                 </Link>
             </div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className={Styles.containerForm}>
                     <div>
-                        <h3>Name:</h3>
+                        <h3 className={Styles.containerH3}>Name:</h3>
                         <input 
                             name="name"
                             key="1"
@@ -110,10 +110,10 @@ const DogCreate = () => {
                             value={input.name} 
                             onChange={handleChange} 
                             placeholder="Type a name of dog"/>
-                        <h2>{errors.name && (<p>{errors.name}</p>)}</h2>
+                        <h2>{errors.name && (<p className={Styles.errors}>{errors.name}</p>)}</h2>
                     </div>
                     <div>
-                        <h3>Height min:</h3>
+                        <h3 className={Styles.containerH3}>Height min:</h3>
                         <input required 
                         key="2"
                         name="height_min"
@@ -121,8 +121,8 @@ const DogCreate = () => {
                         type="number" 
                         value={input.height_min} 
                         onChange={handleChange}/>
-                        <h2>{errors.height_min && (<p>{errors.height_min}</p>)}</h2>
-                        <h3>Height Max:</h3>
+                        <h2>{errors.height_min && (<p className={Styles.errors}>{errors.height_min}</p>)}</h2>
+                        <h3 className={Styles.containerH3}>Height Max:</h3>
                         <input required 
                         key="3"
                         name="height_max"
@@ -130,10 +130,10 @@ const DogCreate = () => {
                         type="number" 
                         value={input.height_max} 
                         onChange={handleChange}/>
-                        <h2>{errors.height_max && (<p>{errors.height_max}</p>)}</h2>
+                        <h2>{errors.height_max && (<p className={Styles.errors}>{errors.height_max}</p>)}</h2>
                     </div>
                     <div>
-                        <h3>Weight Min:</h3>
+                        <h3 className={Styles.containerH3}>Weight Min:</h3>
                         <input 
                         key="4"
                         required 
@@ -142,8 +142,8 @@ const DogCreate = () => {
                         type="number" 
                         value={input.weight_min} 
                         onChange={handleChange}/>
-                        <h2>{errors.weight_min && (<p>{errors.weight_min}</p>)}</h2>
-                        <h3>Weight Max:</h3>
+                        <h2>{errors.weight_min && (<p className={Styles.errors}>{errors.weight_min}</p>)}</h2>
+                        <h3 className={Styles.containerH3}>Weight Max:</h3>
                         <input 
                         key="5"
                         required 
@@ -152,10 +152,10 @@ const DogCreate = () => {
                         type="number" 
                         value={input.weight_max} 
                         onChange={handleChange}/>
-                        <h2>{errors.weight_max && (<p>{errors.weight_max}</p>)}</h2>
+                        <h2>{errors.weight_max && (<p className={Styles.errors}>{errors.weight_max}</p>)}</h2>
                     </div>
                     <div>
-                        <h3>Life Span:</h3>
+                        <h3 className={Styles.containerH3}>Life Span:</h3>
                         <input required 
                         key="6"
                         name="life_span"
@@ -163,10 +163,10 @@ const DogCreate = () => {
                         type="number" 
                         value={input.life_span} 
                         onChange={handleChange}/>
-                        <h2>{errors.life_span && (<p>{errors.life_span}</p>)}</h2>
+                        <h2>{errors.life_span && (<p className={Styles.errors}>{errors.life_span}</p>)}</h2>
                     </div>
                     <div>
-                        <h3>Image:</h3>
+                        <h3 className={Styles.containerH3}>Image:</h3>
                         <input  
                         key="7"
                         name="image" 
@@ -176,7 +176,7 @@ const DogCreate = () => {
                     </div>
                     <div></div>
                     <div>
-                        <h3>TEMPERAMENTS</h3>
+                        <h3 className={Styles.containerH3}>TEMPERAMENTS</h3>
                         <select onChange={handleSelect}>
                             <option value="all" disabled key="temp" >
                                 Temperaments
@@ -189,24 +189,24 @@ const DogCreate = () => {
                             })
                         }
                         </select>
-                        <h2>{errors.temperament && (<p>{errors.temperament}</p>)}</h2>
+                        <h2>{errors.temperament && (<p className={Styles.errors}>{errors.temperament}</p>)}</h2>
                     </div>
                     {
                         (errors.length <= 1)
                         ?
-                        <div>The dog cant be Created Yed</div>
+                        <div className={Styles.errors}>The dog cant be Created Yed</div>
                         :
-                        <button type="submit"> Create</button>
+                        <button type="submit" className={Styles.button}> Create</button>
                     }
                 </form>
-                    <div>
+                    <div className={Styles.temperaments}>
                         {input.temperament.map((d, i) => {
                             return (
-                                <div key={i++}>
-                                    <div>
+                                <div key={i++} >
+                                    <div className={Styles.temperamentsButton}>
                                         {d}
                                     </div>
-                                    <button onClick={() => handleErase(d)}>X</button>
+                                    <button onClick={() => handleErase(d)} className={Styles.button}>X</button>
                                 </div>
                             )
                         })}

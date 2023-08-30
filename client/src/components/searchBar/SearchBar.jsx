@@ -21,14 +21,15 @@ const SearchBar = ({pagination}) => {
     }
 
     return(
-        <div className={Styles.background}>
-            <form onSubmit={handleSubmit}>
+        <div className={Styles.div}>
+            <form onSubmit={handleSubmit} className={Styles.form}>
                 <input 
+                    className={Styles.input}
                     type="text" 
                     onChange={handleInput} 
                     value={searchDog} 
                     placeholder="Name of a dog..."/>
-                <button type="submit">Search</button>
+                <button type="submit" className={Styles.button}>Search</button>
             </form>
         </div>
     )

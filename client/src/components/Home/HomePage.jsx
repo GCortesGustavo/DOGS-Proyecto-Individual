@@ -60,7 +60,7 @@ const Home = () => {
         const selectedValue = event.target.value
         dispatch(orderByName(selectedValue))
         setCurrentPage(1)
-        setOrden(`Ordenado de la ${selectedValue}`)
+        setOrden(`Order by ${selectedValue}`)
     }
 
     
@@ -68,7 +68,7 @@ const Home = () => {
     const handlerFilterByWeight = (event) => {
         dispatch(orderByWeight(event.target.value))
         setCurrentPage(1)
-        setOrden(`Ordenado de ${event.target.value}`)
+        setOrden(`Order by ${event.target.value}`)
     }
 
 
@@ -77,48 +77,48 @@ const Home = () => {
             <header className={Styles.Header}>
                 <div>
                         <Link to="/">
-                            <button>Dog</button>
+                            <button className={Styles.buttonBack}>Doggy</button>
                         </Link>
                         </div>
                     <div className={Styles.filtross} >
                         <div >
-                            <button onClick={handleClick}>Reset</button>
+                            <button onClick={handleClick} className={Styles.button}>Reset</button>
                             <Link to="/dogcreate">
-                                <button>Create DOG</button>
+                                <button className={Styles.button}>Create DOG</button>
                             </Link>
                         </div>
                         <SearchBar pagination={pagination} />
                         <div className={Styles.filtross}>
                                 <div>
-                                    <select onChange={(event) => handlerFilterByName(event)}>
-                                        <option key={1} disabled value="Order" >Order by name</option>
-                                        <option key={3} value="A-Z">A-Z</option>
-                                        <option key={2} value="Z-A">Z-A</option>
+                                    <select className={Styles.select} onChange={(event) => handlerFilterByName(event)}>
+                                        <option className={Styles.option} key={1} disabled value="Order" >Order by name</option>
+                                        <option className={Styles.option} key={3} value="A-Z">A-Z</option>
+                                        <option className={Styles.option} key={2} value="Z-A">Z-A</option>
                                     </select>
 
-                                    <select onChange={(event) => handlerFilterByWeight(event)}>
-                                        <option key={3} disabled value="Order" >Order by weight</option>
-                                        <option key={1} value="Max">Max</option>
-                                        <option key={2} value="Min">Min</option>
+                                    <select className={Styles.select} onChange={(event) => handlerFilterByWeight(event)}>
+                                        <option className={Styles.option} key={3} disabled value="Order" >Order by weight</option>
+                                        <option className={Styles.option} key={1} value="Max">Max</option>
+                                        <option className={Styles.option} key={2} value="Min">Min</option>
                                     </select>
 
-                                    <select onChange={(event) => handlerFilterCreated(event)}>
-                                        <option key={4} disabled value="Order" >Order by created</option>
-                                        <option key={1} value="all">ALL</option>
-                                        <option key={2} value="db">Created</option>
-                                        <option key={3} value="api">api</option>
+                                    <select className={Styles.select} onChange={(event) => handlerFilterCreated(event)}>
+                                        <option className={Styles.option} key={4} disabled value="Order" >Order by created</option>
+                                        <option className={Styles.option} key={1} value="all">ALL</option>
+                                        <option className={Styles.option} key={2} value="db">Created</option>
+                                        <option className={Styles.option} key={3} value="api">api</option>
                                     </select>
 
-                                    <select onChange={(event) => handlerFilterTemperament(event)}>
-                                        <option key={2} disabled value="Temperaments">Temperaments</option>
-                                        <option key={1 + "e"} value="all">All</option>
+                                    <select className={Styles.select} onChange={(event) => handlerFilterTemperament(event)}>
+                                        <option className={Styles.option} key={2} disabled value="Temperaments">Temperaments</option>
+                                        <option className={Styles.option} key={1 + "e"} value="all">All</option>
                                         {allTemperaments.map((temp, index) => (
-                                            <option value={temp.name} key={index}>
+                                            <option className={Styles.option} value={temp.name} key={index}>
                                                 {temp.name}
                                             </option>
                                         ))}
                                     </select>
-                                    {orden && <p>{orden}</p>}
+                                    {orden && <p className={Styles.orden}>{orden}</p>}
                         </div>
                     </div>
             </div>    
