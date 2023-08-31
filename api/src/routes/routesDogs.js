@@ -31,7 +31,7 @@ dogs.get("/dogs", async(req, res) =>{
 //Ruta para postear perros nuevos
 dogs.post("/dogs", async(req, res)=>{
     try{
-    const { name, height, weight, life_span, temperament} = req.body;
+    const { name, height, weight, life_span, temperament, dueño} = req.body;
     const dogCreate = await Dog.create({ 
         name,
         height,
@@ -39,6 +39,7 @@ dogs.post("/dogs", async(req, res)=>{
         life_span,
         createdInBd: true,
         image: "https://www.dogbreedslist.info/uploads/dog-pictures/beagle-2.jpg",
+        dueño,
     })
     const temperamentFilter = await Temperament.findAll({
         where: {name : temperament} })

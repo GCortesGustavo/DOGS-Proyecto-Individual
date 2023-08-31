@@ -16,7 +16,8 @@ const DogCreate = () => {
         weight: "",
         life_span: 0,
         image: "",
-        temperament: []
+        temperament: [],
+        dueño: ""
     })
 
     
@@ -39,7 +40,6 @@ const DogCreate = () => {
         const inputCopy = {...input,[event.target.name] : event.target.value}
         const validation = validate(inputCopy);
         setErrors(validation)
-        
     };
 
     
@@ -58,7 +58,8 @@ const DogCreate = () => {
                 weight: `${dog.weight} - ${dog.weight}`,
                 life_span: dog.life_span,
                 image: dog.image,
-                temperament: [dog.temperament]
+                temperament: [dog.temperament],
+                dueño: dog.dueño
             });
             
             window.location.href = "/home";
@@ -69,8 +70,8 @@ const DogCreate = () => {
             weight: `${dog.weight_min} - ${dog.weight_max}`,
             life_span: dog.life_span,
             image: dog.image,
-            temperament: input.temperament
-            
+            temperament: input.temperament,
+            dueño: dog.dueño
         }
         dispatch(postDog(doggy));
         alert("The dow was created")
@@ -111,6 +112,18 @@ const DogCreate = () => {
                             onChange={handleChange} 
                             placeholder="Type a name of dog"/>
                         <h2>{errors.name && (<p className={Styles.errors}>{errors.name}</p>)}</h2>
+                    </div>
+                    <div>
+                        <h3 className={Styles.containerH3}>Dueño:</h3>
+                        <input
+                            name="dueño"
+                            key="8"
+                            required
+                            type="text"
+                            value={input.dueño}
+                            onChange={handleChange}
+                            placeholder="Type your name"
+                        />
                     </div>
                     <div>
                         <h3 className={Styles.containerH3}>Height min:</h3>

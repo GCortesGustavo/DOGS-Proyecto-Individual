@@ -34,6 +34,11 @@ module.exports = (sequelize) => {
     createdInDB:{
       type: DataTypes.STRING,
       defaultValue : "db"
+    },
+    dueño:{
+      type: DataTypes.STRING,
+      allowNull : true,
+      defaultValue: "Este perro no tiene dueño"
     }
   });
 };
