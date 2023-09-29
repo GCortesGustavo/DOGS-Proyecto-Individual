@@ -2,20 +2,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 5%; /* Utilizar porcentajes para el espaciado */
+    text-align: center;
 }
 
 .errorImage {
     width: 100%;
     max-width: 300px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 5%; /* Utilizar porcentajes para el espaciado */
     border-radius: 10px;
 }
 
 .errorMessage {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 4vw; /* Utilizar unidades relativas como vw para el tamaño de fuente */
+    margin-bottom: 5%; /* Utilizar porcentajes para el espaciado */
     color: crimson;
 }
 
@@ -27,7 +28,25 @@
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 2% 4%; /* Utilizar porcentajes para el espaciado */
     cursor: pointer;
     border-radius: 10px;
+}
+
+/* *---------------------------------------* */
+
+/* Utiliza unidades relativas y porcentajes en lugar de valores fijos */
+
+@media (max-width: 768px) {
+    .errorImage {
+        max-width: 200px; /* Ajustar el tamaño de la imagen para pantallas más pequeñas */
+    }
+
+    .errorMessage {
+        font-size: 6vw; /* Ajustar el tamaño de fuente para pantallas más pequeñas */
+    }
+
+    .homeButton {
+        padding: 2% 3%; /* Ajustar el espaciado del botón para pantallas más pequeñas */
+    }
 }

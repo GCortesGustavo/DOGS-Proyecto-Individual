@@ -1,23 +1,39 @@
 .image {
     border-radius: 10px;
+    max-width: 100%; /* Para asegurarte de que las imágenes se ajusten al ancho del contenedor */
+        height: auto; /* Para mantener la proporción de aspecto de la imagen */
 }
 
 .titulo {
     font-size: 18px;
     margin: 0;
-    color: green;
+    margin-top: 10px;
+    margin-left: 65px;
+    margin-right: 65px;
+    color: #FAF1E4;
+    border-radius: 5px;
+    background-color: #435334;
     transition: .5s, color .10s;
     -webkit-transition: .5s, color .10s;
     -moz-transition: .5s, color .10s;
     font-family: 'Bebas Neue', sans-serif;
+    max-width: 100%; /* Para asegurarte de que el texto no se desborde en pantallas pequeñas */
+    text-align: center; /* Centrar el texto en dispositivos pequeños */
 }
 
 
 .titulo:hover{
-    color: #1D5B79;
+    color: #E9FFC2;
     transform: scale3d(1.5, 1.5, 0.3);
     -webkit-transform: scale3d(1.5, 1.5, 0.3);
     -moz-transform: scale3d(1.5, 1.5, 0.3);
     font-family: 'Bebas Neue', sans-serif;
     }
 
+
+/* Media query para ajustar estilos en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 16px;
+    }
+}

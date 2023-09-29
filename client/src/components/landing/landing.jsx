@@ -7,7 +7,7 @@ const Landing = () => {
     return (
         <div className={Style.background}>
             <div className={Style.container} >
-            <h1 className={Style.title}>Welcome to my proyect-DOGGYS</h1>
+            <h1 className={Style.title}>DOGGYS APP</h1>
             <Link to="/home">
                 <button className={Style.button} >HOME</button>
             </Link>

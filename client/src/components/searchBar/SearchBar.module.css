@@ -3,34 +3,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    padding: 10px; /* Agregar un relleno para mejorar la apariencia en dispositivos más grandes */
+    height: auto; /* Cambiar a altura automática para que se ajuste según el contenido */
 }
 
-.div{
-    margin-left: 10px;
-    margin-right: 10px;
+.div {
+    margin: 10px; /* Combinar margen izquierdo y derecho en una sola declaración */
 }
+
+
 .input {
     padding: 10px;
     font-size: 16px;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px; /* Simplificar la propiedad de borde */
     outline: none;
+    width: 100%; /* Hacer que el ancho sea del 100% para dispositivos más pequeños */
 }
 
 .form {
     display: flex;
     align-items: center;
+    width: 100%; /* Hacer que el formulario ocupe todo el ancho disponible */
 }
 
 .button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px; /* Simplificar la propiedad de borde */
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    width: auto; /* Cambiar a ancho automático para ajustarse al contenido */
 }
 
 

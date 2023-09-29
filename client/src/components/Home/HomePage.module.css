@@ -1,7 +1,8 @@
 .background {
-    background-color: #9EB384;
+    /* background-color: #9EB384; */
     background-size: cover;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Asegurar un mínimo de altura para que la imagen de fondo cubra la pantalla completa */
 }
 
 .Header {
@@ -16,11 +17,10 @@
 }
 
 .Cards {
-    background-color: #9EB384;
+    /* background-color: #9EB384; */
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;
+    flex-wrap: wrap; /* Cambiar a flex-wrap para que las tarjetas se ajusten automáticamente en dispositivos más pequeños */
     font-family: 'Bebas Neue', sans-serif;
 }
 
@@ -28,10 +28,13 @@
     margin: 20px;
     border: 1px solid #435334;
     padding: 20px;
-    width: 310px;
-    height: 470px;
-    margin: 40px;
-    background-color: #CEDEBD;
+    max-width: 310px; /* Cambiar a max-width para que las tarjetas se ajusten en dispositivos más pequeños */
+    width: 100%;
+    height: auto; /* Ajustar automáticamente la altura en función del contenido */
+    /* background-color: #CEDEBD; */
+    /* background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
+    background-image: url("./image/BackgroundCardDog.jpg");
     border-radius: 28px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -43,7 +46,7 @@
 
 @media (max-width: 768px) {
     .Card {
-    max-width: calc(50% - 20px);
+        max-width: calc(50% - 40px); /* Ajustar el tamaño de las tarjetas para dispositivos más pequeños */
     }
 }
 
@@ -51,8 +54,7 @@
 .filtross {
     display: flex;
     justify-content: center;
-    /* align-content: center; */
-    flex-direction: row;
+    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
     margin: 10px;
 }
 
@@ -71,9 +73,7 @@
 .button:hover{
     background-color:  #FAF1E4;
     color: #435334;
-    transform: scale3d(1.5, 1.5, 0.3);
-    -webkit-transform: scale3d(1.5, 1.5, 0.3);
-    -moz-transform: scale3d(1.5, 1.5, 0.3);
+    transform: scale(1.1); /* Escala ligeramente en lugar de una transformación drástica */
     font-family: 'Bebas Neue', sans-serif;
     }
 
@@ -92,9 +92,7 @@
 .buttonBack:hover{
     background-color:  #007bff;
     color: #ccc;
-    transform: scale3d(1.5, 1.5, 0.3);
-    -webkit-transform: scale3d(1.5, 1.5, 0.3);
-    -moz-transform: scale3d(1.5, 1.5, 0.3);
+    transform: scale(1.1); /* Escala ligeramente en lugar de una transformación drástica */
     font-family: 'Bebas Neue', sans-serif;
     }
 
@@ -119,5 +117,25 @@
     font-family: 'Bebas Neue', sans-serif;
 
 }
+
+
+/* -------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

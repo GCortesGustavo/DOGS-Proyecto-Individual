@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
     list-style: none;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten automáticamente en dispositivos más pequeños */
 }
+
 
 .point {
     list-style: none;
@@ -17,9 +19,9 @@
 }
 
 .point:hover{
-    transform: scale3d(1.5, 1.5, 0.3);
-        -webkit-transform: scale3d(1.5, 1.5, 0.3);
-        -moz-transform: scale3d(1.5, 1.5, 0.3);
+    transform: scale(1.5); /* Escala ligeramente en lugar de una transformación drástica */
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
 }
 
 .button {
@@ -28,6 +30,11 @@
     background-color: darkgreen;
     color: #FAF1E4;
     width: 40px;
-    height: 30px
+    height: 30px;
+    text-align: center; /* Centra el texto horizontalmente en el botón */
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente en el botón */
+    justify-content: center;
+    margin: 5px;
 }
 

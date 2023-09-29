@@ -3,17 +3,20 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #252B48;
-    /* background-image: url("https://i.pinimg.com/564x/80/9b/ba/809bba71e562fc3b475f090621238a91.jpg"); */
+    background-image: url("./images/PerroBonito.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     margin: 100px;
     border-radius: 10px;
+    margin: 20px; /* Ajusta el margen en lugar de un margen grande para pantallas más pequeñas */
 }
 
 .container{
     background-color: #435334;
+    opacity: 80%;
     border-radius: 10px;
+    padding: 20px; /* Añade un espacio interno para el contenido */
+    margin: 10px; /* Ajusta el margen en lugar de un margen grande para pantallas más pequeñas */
 }
 
 .homeButton {
@@ -26,12 +29,10 @@
     margin-top: 15px;
 }
 
-.homeButton:hover{
+.homeButton:hover {
     color: #435334;
     background-color: #FAF1E4;
-    transform: scale3d(1.5, 1.5, 0.3);
-    -webkit-transform: scale3d(1.5, 1.5, 0.3);
-    -moz-transform: scale3d(1.5, 1.5, 0.3);
+    transform: scale(1.1); /* Escala ligeramente en lugar de una transformación drástica */
     font-family: 'Bebas Neue', sans-serif;
 }
 
@@ -65,4 +66,29 @@
 
 .loading {
     margin-top: 20px;
+}
+
+
+/* Media query para ajustar estilos en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .detailContainer {
+        margin: 10px;
+    }
+    
+    .container {
+        margin: 10px;
+    }
+    
+    .homeButton {
+        padding: 8px 16px;
+        margin-top: 10px;
+    }
+    
+    .dogDetails {
+        padding: 10px;
+    }
+    
+    .dogImage {
+        margin-bottom: 10px;
+    }
 }
