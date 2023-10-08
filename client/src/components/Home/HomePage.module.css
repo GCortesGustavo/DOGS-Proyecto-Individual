@@ -44,14 +44,22 @@
 }
 
 
-@media (max-width: 768px) {
-    .Card {
-        max-width: calc(50% - 40px); /* Ajustar el tamaño de las tarjetas para dispositivos más pequeños */
-    }
+.filtross {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+    margin: 10px;
 }
 
 
-.filtross {
+.filtross1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+    margin: 10px;
+}
+
+.filtrossOrden {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
@@ -103,6 +111,10 @@
     font-family: 'Bebas Neue', sans-serif;
     }
 
+.contButton {
+    margin: 10px 0px 10px 0px;
+}
+
 .select {
     padding: 8px;
     margin-right: 10px;
@@ -127,9 +139,78 @@
 }
 
 
-/* -------------------------------------- */
+/* ----------------MEDIA QUERIES---------------------- */
 
 
+@media (max-width: 768px) {
+    .Card {
+        max-width: calc(50% - 40px); /* Ajustar el tamaño de las tarjetas para dispositivos más pequeños */
+    }
+
+    .filtrossOrden{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .contButton { 
+        padding: 10px;
+        width: 80px;
+        height: 60px;
+        position: relative;
+        margin: -90px 0px 10px 0px;
+        }
+
+    .filtross1 {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+            margin: 10px;
+        }
+
+        .botonesXd {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+            margin: 10px;
+        }
+}
+
+
+@media (max-width: 414px) {
+    .Card {
+        max-width: calc(50% - 40px); /* Ajustar el tamaño de las tarjetas para dispositivos más pequeños */
+    }
+
+    .filtrossOrden{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .contButton { 
+    padding: 10px;
+    width: 80px;
+    height: 60px;
+    position: relative;
+    margin: -200px 0px 10px 0px;
+    }
+
+    .filtross1 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+        margin: 10px;
+    }
+
+    .botonesXd {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+        margin: 10px;
+    }
+}
 
 
 

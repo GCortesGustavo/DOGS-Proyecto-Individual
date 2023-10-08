@@ -27,8 +27,8 @@
 .button {
     list-style: none;
     border-radius: 5px;
-    background-color: darkgreen;
-    color: #FAF1E4;
+    background-color: #FFF5E0;
+    color: #141E46;
     width: 40px;
     height: 30px;
     text-align: center; /* Centra el texto horizontalmente en el botón */

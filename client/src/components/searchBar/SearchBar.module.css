@@ -42,3 +42,30 @@
 .button:hover {
     background-color: #FF6969;
 } 
+
+/*-----------Responsive-------------*/
+@media (max-width: 768px) { 
+    .background { 
+        flex-direction: column; 
+    } 
+
+    .button { 
+        width: 100%; 
+    } 
+    
+    .div { 
+        margin: 5px; 
+    } 
+} 
+
+/* Estilos para pantallas medianas (hasta 767px) */ 
+@media (max-width: 414px) { 
+    
+    .button { 
+        font-size: 14px; 
+        width: 80px
+    } 
+} 
+
+
+

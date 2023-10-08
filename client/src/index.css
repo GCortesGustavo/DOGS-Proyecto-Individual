@@ -7,8 +7,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: #9EB384; */
-  background: rgb(67,83,52);
-  background: linear-gradient(0deg, rgba(67,83,52,1) 20%, rgba(158,179,132,1) 45%, rgba(206,222,189,1) 68%, rgba(250,241,228,1) 100%);
+  background: #ff6969;
+  background: linear-gradient(0deg, rgb(199, 0, 57) 20%, rgba(255, 105, 105) 45%, #FF8080 68%, #FFF5E0 100%);
   background-size: cover;
   background-repeat: no-repeat;
 }

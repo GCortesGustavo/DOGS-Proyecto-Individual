@@ -75,12 +75,12 @@ const Home = () => {
     return (
         <div className={Styles.background}>
             <header className={Styles.Header}>
-                <div>
-                        <Link to="/">
-                            <button className={Styles.buttonBack}>Doggy</button>
-                        </Link>
+                        <div className={Styles.contButton}>
+                            <Link to="/">
+                                <button className={Styles.buttonBack}>Doggy</button>
+                            </Link>
                         </div>
-                    <div className={Styles.filtross} >
+                    <div className={Styles.filtross1} >
                         <div className={Styles.botonesXd} >
                             <button onClick={handleClick} className={Styles.button}>Reset</button>
                             <Link to="/dogcreate">
@@ -89,7 +89,7 @@ const Home = () => {
                         </div>
                         <SearchBar pagination={pagination} />
                         <div className={Styles.filtross}>
-                                <div>
+                                <div className={Styles.filtrossOrden}>
                                     <select className={Styles.select} onChange={(event) => handlerFilterByName(event)}>
                                         <option className={Styles.option} key={1} disabled value="Order" >Order by name</option>
                                         <option className={Styles.option} key={3} value="A-Z">A-Z</option>
