@@ -114,7 +114,7 @@ const DogCreate = () => {
                         <h2>{errors.name && (<p className={Styles.errors}>{errors.name}</p>)}</h2>
                     </div>
                     <div>
-                        <h3 className={Styles.containerH3}>Dueño:</h3>
+                        <h3 className={Styles.containerH3}>Owner:</h3>
                         <input
                             name="dueño"
                             key="8"
