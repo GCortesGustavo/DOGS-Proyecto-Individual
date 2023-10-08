@@ -81,7 +81,7 @@ const Home = () => {
                         </Link>
                         </div>
                     <div className={Styles.filtross} >
-                        <div >
+                        <div className={Styles.botonesXd} >
                             <button onClick={handleClick} className={Styles.button}>Reset</button>
                             <Link to="/dogcreate">
                                 <button className={Styles.button}>Create DOG</button>

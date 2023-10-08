@@ -1,5 +1,5 @@
 .background {
-    background-color: #435334;
+    background-color: #141E46;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,13 +32,13 @@
     font-size: 16px;
     border: none;
     border-radius: 5px; /* Simplificar la propiedad de borde */
-    background-color: #007bff;
-    color: white;
+    background-color: #C70039;
+    color: #FFF5E0;
     cursor: pointer;
     width: auto; /* Cambiar a ancho automático para ajustarse al contenido */
 }
 
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #FF6969;
 } 

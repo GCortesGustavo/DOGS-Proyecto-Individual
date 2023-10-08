@@ -6,13 +6,13 @@
 }
 
 .Header {
-    background-color: #435334;
+    background-color: #141E46;
     font-family: 'Bebas Neue', sans-serif;
     display: flex;
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 20px;
 }
 
@@ -58,9 +58,16 @@
     margin: 10px;
 }
 
+.botonesXd {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+    margin: 10px;
+}
+
 .button {
-    background-color: #007bff;
-    color: white;
+    background-color: #FF6969;
+    color: #141E46;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -72,26 +79,26 @@
 
 .button:hover{
     background-color:  #FAF1E4;
-    color: #435334;
+    color: #141E46;
     transform: scale(1.1); /* Escala ligeramente en lugar de una transformación drástica */
     font-family: 'Bebas Neue', sans-serif;
     }
 
 .buttonBack {
-    background-color: #CEDEBD;
+    background-color: #FF6969;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-left: 20px;
-    margin-right: 20px;
-    color: #435334;
+    margin-left: 35px;
+    margin-right: 35px;
+    color: #141E46;
 }
 
 .buttonBack:hover{
-    background-color:  #007bff;
-    color: #ccc;
+    background-color:  #C70039;
+    color: #141E46;
     transform: scale(1.1); /* Escala ligeramente en lugar de una transformación drástica */
     font-family: 'Bebas Neue', sans-serif;
     }
@@ -99,23 +106,24 @@
 .select {
     padding: 8px;
     margin-right: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #141E46;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 12px;
     outline: none;
     cursor: pointer;
+    height: 30px;
+    text-align: center;
 }
 
 .option {
     margin-left: 10px;
     font-size: 14px;
-    color: #007bff;
+    color: #C70039;
 }
 
 .orden {
-    color: #CEDEBD;
+    color: #C70039;
     font-family: 'Bebas Neue', sans-serif;
-
 }
 
 
