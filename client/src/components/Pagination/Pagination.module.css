@@ -8,6 +8,7 @@
 
 .point {
     list-style: none;
+    border: none;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 35px;
@@ -22,10 +23,12 @@
     transform: scale(1.5); /* Escala ligeramente en lugar de una transformación drástica */
     -webkit-transform: scale(1.5);
     -moz-transform: scale(1.5);
+    border: none;
 }
 
 .button {
     list-style: none;
+    border: none;
     border-radius: 5px;
     background-color: #FFF5E0;
     color: #141E46;

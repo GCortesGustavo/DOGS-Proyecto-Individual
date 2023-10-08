@@ -1,7 +1,8 @@
 .image {
-    border-radius: 10px;
+    border-radius: 8px;
     max-width: 100%; /* Para asegurarte de que las imágenes se ajusten al ancho del contenedor */
         height: auto; /* Para mantener la proporción de aspecto de la imagen */
+    border: 0.8px solid #C70039;
 }
 
 .titulo {
@@ -10,9 +11,9 @@
     margin-top: 10px;
     margin-left: 65px;
     margin-right: 65px;
-    color: #FAF1E4;
+    color: #FFF5E0;
     border-radius: 5px;
-    background-color: #435334;
+    background-color: #C70039;
     transition: .5s, color .10s;
     -webkit-transition: .5s, color .10s;
     -moz-transition: .5s, color .10s;
@@ -21,9 +22,12 @@
     text-align: center; /* Centrar el texto en dispositivos pequeños */
 }
 
+a:link{
+    text-decoration: none;
+}
 
 .titulo:hover{
-    color: #E9FFC2;
+    color: #141E46;
     transform: scale3d(1.5, 1.5, 0.3);
     -webkit-transform: scale3d(1.5, 1.5, 0.3);
     -moz-transform: scale3d(1.5, 1.5, 0.3);
@@ -35,5 +39,22 @@
 @media (max-width: 768px) {
     .titulo {
         font-size: 16px;
+        margin-left: 10px; /* Ajustado para pantallas más pequeñas */
+        margin-right: 10px; /* Ajustado para pantallas más pequeñas */
+    }
+}
+
+/* Media query para pantallas más grandes */
+@media (min-width: 1200px) {
+    .titulo {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 414px) {
+    .titulo {
+        font-size: 14px; /* Ajuste de tamaño de fuente para 414px */
+        margin-left: 5px; /* Ajuste de margen izquierdo para 414px */
+        margin-right: 5px; /* Ajuste de margen derecho para 414px */
     }
 }

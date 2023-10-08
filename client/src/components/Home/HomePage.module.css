@@ -1,8 +1,7 @@
 .background {
-    /* background-color: #9EB384; */
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh; /* Asegurar un mínimo de altura para que la imagen de fondo cubra la pantalla completa */
+    min-height: 100vh; 
 }
 
 .Header {
@@ -17,37 +16,36 @@
 }
 
 .Cards {
-    /* background-color: #9EB384; */
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Cambiar a flex-wrap para que las tarjetas se ajusten automáticamente en dispositivos más pequeños */
+    flex-wrap: wrap;
     font-family: 'Bebas Neue', sans-serif;
 }
 
 .Card {
-    margin: 20px;
-    border: 1px solid #435334;
-    padding: 20px;
-    max-width: 310px; /* Cambiar a max-width para que las tarjetas se ajusten en dispositivos más pequeños */
-    width: 100%;
-    height: auto; /* Ajustar automáticamente la altura en función del contenido */
-    /* background-color: #CEDEBD; */
-    /* background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); */
-    background-image: url("./image/BackgroundCardDog.jpg");
+    margin: 15px;
+    border: 1px solid #C70039;
+    padding: 20px; 
+    width: 320px;
+    height: 450px;
+    background-image: url("https://i.pinimg.com/originals/8f/46/99/8f4699f8894d76a58cdbf298fce510f4.jpg");
     border-radius: 28px;
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Bebas Neue', sans-serif;
-    color: #435334;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: #141E46;
+}
+
+h2 {
+    background-color: #FF6969;
+    border-radius: 5px;
 }
 
 
 .filtross {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+    flex-wrap: wrap; 
     margin: 10px;
 }
 
@@ -55,21 +53,21 @@
 .filtross1 {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+    flex-wrap: wrap;
     margin: 10px;
 }
 
 .filtrossOrden {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+    flex-wrap: wrap; 
     margin: 10px;
 }
 
 .botonesXd {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Cambiar a flex-wrap para que los botones se ajusten automáticamente en dispositivos más pequeños */
+    flex-wrap: wrap; 
     margin: 10px;
 }
 
@@ -88,7 +86,7 @@
 .button:hover{
     background-color:  #FAF1E4;
     color: #141E46;
-    transform: scale(1.1); /* Escala ligeramente en lugar de una transformación drástica */
+    transform: scale(1.1); 
     font-family: 'Bebas Neue', sans-serif;
     }
 
@@ -107,7 +105,7 @@
 .buttonBack:hover{
     background-color:  #C70039;
     color: #141E46;
-    transform: scale(1.1); /* Escala ligeramente en lugar de una transformación drástica */
+    transform: scale(1.1); 
     font-family: 'Bebas Neue', sans-serif;
     }
 
